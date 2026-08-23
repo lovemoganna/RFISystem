@@ -1,9 +1,12 @@
 # 🛡️ RFI System — CEX 风控与合规调查协作管理系统 (v7)
 
-[![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
-[![Platform](https://img.shields.io/badge/platform-Web%20%7C%20Zero--Dependency-orange.svg)]()
-[![Theme](https://img.shields.io/badge/theme-Dark%20%2F%20Light-purple.svg)]()
-[![Version](https://img.shields.io/badge/version-v7.0%20Masterpiece-success.svg)]()
+[![Live Demo](https://img.shields.io/badge/online%20service-live%20demo-brightgreen.svg?style=flat-square&logo=github)](https://lovemoganna.github.io/RFISystem/)
+[![License](https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)](LICENSE)
+[![Platform](https://img.shields.io/badge/platform-Web%20%7C%20Zero--Dependency-orange.svg?style=flat-square)]()
+[![Theme](https://img.shields.io/badge/theme-Dark%20%2F%20Light-purple.svg?style=flat-square)]()
+[![Version](https://img.shields.io/badge/version-v7.0%20Masterpiece-success.svg?style=flat-square)]()
+
+🌐 **在线直接使用**: [https://lovemoganna.github.io/RFISystem/](https://lovemoganna.github.io/RFISystem/)
 
 **CEX 风险控制与合规审核工作台** —— 专为中心化交易所（CEX）、Web3 资管与合规团队量身定制的 Request for Information (RFI) 场景化模板库和高效协查处理套件。快速生成多语言合规通知，提高合规性、反洗钱（AML/CFT）调查、司法协查以及日常风险控制的工作效率。
 
