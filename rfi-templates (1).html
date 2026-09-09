@@ -1150,10 +1150,12 @@ body {
   padding: 18px 24px;
   font-family: inherit;
   font-size: 13px;
-  line-height: 1.8;
+  line-height: 1.75;
   color: var(--t1);
   overflow-y: auto;
   box-shadow: var(--shadow-sm);
+  white-space: normal;
+  word-break: break-word;
 }
 .editor-preview h1, .editor-preview h2, .editor-preview h3 {
   margin-top: 16px;
@@ -1165,8 +1167,25 @@ body {
 .editor-preview h2 { font-size: 14.5px; }
 .editor-preview h3 { font-size: 13.5px; }
 .editor-preview p { margin-bottom: 12px; }
-.editor-preview ul, .editor-preview ol { margin-left: 20px; margin-bottom: 12px; }
-.editor-preview li { margin-bottom: 4px; }
+.editor-preview ul, .editor-preview ol {
+  margin: 4px 0 10px 0;
+  padding-left: 22px;
+}
+.editor-preview ul { list-style-type: disc; }
+.editor-preview ol { list-style-type: decimal; }
+.editor-preview li {
+  margin-bottom: 3px;
+  padding-left: 2px;
+  line-height: 1.7;
+}
+.editor-preview li > ul, .editor-preview li > ol {
+  margin-top: 3px;
+  margin-bottom: 3px;
+}
+.editor-preview p {
+  margin: 0 0 10px 0;
+  line-height: 1.75;
+}
 .editor-preview strong { color: var(--ac); font-weight: 600; }
 .editor-preview .ph-marker {
   background: var(--acd);
@@ -6062,354 +6081,6 @@ code, kbd, samp, pre,
   box-shadow: var(--shadow-sm);
 }
 
-.editor-split-container {
-  display: flex;
-  flex: 1;
-  gap: 14px;
-  padding: 14px 20px 18px;
-  min-height: 0;
-  overflow: hidden;
-}
-
-.tcnt-edit {
-  background: var(--sf);
-  border: 1px solid var(--bd);
-  border-radius: var(--radius-md);
-  padding: 16px 20px;
-  font-size: 13px;
-  line-height: 1.9;
-  color: var(--t1);
-  white-space: pre-wrap;
-  word-break: break-word;
-  flex: 1;
-  min-height: 0;
-  resize: none;
-  outline: none;
-  transition: border-color 0.2s ease, box-shadow 0.2s ease;
-  box-shadow: inset 0 1px 3px rgba(0,0,0,0.04);
-  font-family: 'Noto Sans Mono', 'Noto Sans SC', Consolas, monospace;
-}
-.tcnt-edit:focus {
-  border-color: var(--ac);
-  box-shadow: 0 0 0 2.5px var(--acb);
-}
-
-.editor-preview {
-  flex: 1;
-  background: var(--sf);
-  border: 1px solid var(--bd);
-  border-radius: var(--radius-md);
-  padding: 16px 20px;
-  font-size: 13px;
-  line-height: 1.9;
-  color: var(--t1);
-  overflow-y: auto;
-  box-shadow: inset 0 1px 3px rgba(0,0,0,0.04);
-  white-space: pre-wrap;
-  word-break: break-word;
-}
-
-/* Tab 2: Quick Fill Refinements */
-.flay {
-  display: grid;
-  grid-template-columns: 380px 1fr;
-  flex: 1;
-  min-height: 0;
-  overflow: hidden;
-  background: var(--bg);
-}
-
-@media (max-width: 1080px) {
-  .flay {
-    grid-template-columns: 1fr;
-    overflow-y: auto;
-  }
-}
-
-.fcol {
-  padding: 16px 18px 20px;
-  overflow-y: auto;
-  border-right: 1px solid var(--bd);
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  background: var(--sf);
-}
-
-.prevcol {
-  padding: 16px 20px 20px;
-  overflow-y: auto;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  background: var(--bg);
-}
-
-.prevbody {
-  background: var(--sf);
-  border: 1px solid var(--bd);
-  border-radius: var(--radius-md);
-  padding: 20px 24px;
-  font-size: 13px;
-  line-height: 1.9;
-  color: var(--t1);
-  box-shadow: var(--shadow-sm);
-  white-space: pre-wrap;
-  word-break: break-word;
-  flex: 1;
-}
-
-/* Tab 3: Batch Studio Refinements */
-.batch-container {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  flex: 1;
-  gap: 16px;
-  padding: 16px 20px 20px;
-  min-height: 0;
-  overflow: hidden;
-}
-
-@media (max-width: 900px) {
-  .batch-container {
-    grid-template-columns: 1fr;
-    overflow-y: auto;
-  }
-}
-
-.batch-card {
-  background: var(--sf);
-  border: 1px solid var(--bd);
-  border-radius: var(--radius-md);
-  padding: 16px 18px;
-  display: flex;
-  flex-direction: column;
-  box-shadow: var(--shadow-sm);
-  min-height: 0;
-  transition: box-shadow 0.2s ease;
-}
-.batch-card:hover {
-  box-shadow: var(--shadow-md);
-}
-
-.batch-hdr {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 12px;
-  flex-shrink: 0;
-  padding-bottom: 10px;
-  border-bottom: 1px solid var(--bd);
-}
-
-.batch-title {
-  font-size: 12.5px;
-  font-weight: 700;
-  color: var(--t1);
-  display: flex;
-  align-items: center;
-  gap: 6px;
-}
-
-/* Fill col section headers */
-.fcolh {
-  font-size: 10px;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.09em;
-  color: var(--t3);
-  margin-bottom: 10px;
-  display: flex;
-  align-items: center;
-  gap: 6px;
-}
-
-/* Preview col headers */
-.prevh {
-  font-size: 10px;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.09em;
-  color: var(--t3);
-  margin-bottom: 4px;
-  display: flex;
-  align-items: center;
-  gap: 6px;
-}
-
-.prevprog {
-  font-size: 12px;
-  color: var(--t3);
-  margin-bottom: 12px;
-  font-weight: 500;
-  display: flex;
-  align-items: center;
-  gap: 6px;
-}
-
-.prevprog span {
-  color: var(--gr);
-  font-weight: 700;
-}
-
-/* ══ MASTERPIECE UI REFINEMENTS & ERGONOMIC OPTIMIZATIONS ══ */
-::selection {
-  background: var(--acb);
-  color: var(--t1);
-}
-
-:focus-visible {
-  outline: 2px solid var(--ac);
-  outline-offset: 1px;
-}
-
-/* Smooth antialiased typography & inputs */
-button, select, input, textarea {
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-/* Header refined visual depth */
-.hdr {
-  background: var(--glass-bg);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border-bottom: 1px solid var(--bd);
-}
-
-.brand-toggle-btn:hover {
-  background: var(--sf2);
-  color: var(--ac);
-  border-color: var(--acb);
-  transform: scale(1.04);
-}
-
-.srch input:focus {
-  border-color: var(--ac);
-  background: var(--sf);
-  box-shadow: 0 0 0 3px var(--acb), var(--shadow-sm);
-}
-
-/* Sidebar tree & item polish */
-.ti {
-  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-}
-.ti:hover {
-  transform: translateX(3px);
-  border-color: var(--bd2);
-  box-shadow: var(--shadow-sm);
-}
-.ti.on {
-  border-color: var(--ac);
-  background: var(--acd);
-  box-shadow: 0 2px 8px rgba(217, 119, 6, 0.12);
-}
-
-/* Hero CTA Standout Button */
-.hero-cta-btn {
-  background: linear-gradient(135deg, var(--ac) 0%, #ea580c 100%);
-  color: #ffffff;
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  box-shadow: 0 2px 8px rgba(217, 119, 6, 0.32);
-  transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
-}
-.hero-cta-btn:hover {
-  transform: translateY(-1px) scale(1.02);
-  box-shadow: 0 4px 14px rgba(217, 119, 6, 0.45);
-  filter: brightness(1.08);
-}
-.hero-cta-btn:active {
-  transform: translateY(0) scale(0.98);
-}
-
-/* Productivity Suite Capsule Buttons */
-.tmeta-tool-group {
-  display: flex;
-  align-items: center;
-  gap: 2px;
-  background: var(--sf2);
-  border: 1px solid var(--bd);
-  border-radius: var(--radius-sm);
-  padding: 2px;
-}
-.tmeta-tool-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 5px;
-  padding: 4px 9px;
-  border-radius: 4px;
-  border: none;
-  background: transparent;
-  color: var(--t2);
-  font-size: 11.5px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: var(--transition);
-}
-.tmeta-tool-btn:hover {
-  background: var(--sf);
-  color: var(--t1);
-  box-shadow: var(--shadow-sm);
-}
-.tmeta-tool-btn:active {
-  transform: scale(0.97);
-}
-
-/* SLA Pill indicator tags */
-.sla-pill {
-  display: inline-flex;
-  align-items: center;
-  gap: 4px;
-  font-size: 10.5px;
-  font-weight: 700;
-  padding: 2.5px 8px;
-  border-radius: 20px;
-  letter-spacing: 0.02em;
-}
-.sla-crit { background: var(--red); color: var(--re); border: 1px solid rgba(239, 68, 68, 0.3); }
-.sla-high { background: var(--ord); color: var(--or); border: 1px solid rgba(249, 115, 22, 0.3); }
-.sla-med { background: var(--acd); color: var(--ac); border: 1px solid var(--acb); }
-.sla-low { background: var(--grd); color: var(--gr); border: 1px solid rgba(16, 185, 129, 0.3); }
-
-/* Quick Fill Column Cards */
-.smart-parse-box {
-  background: var(--bld);
-  border: 1px dashed rgba(59, 130, 246, 0.35);
-  border-radius: var(--radius-md);
-  padding: 12px 14px;
-  transition: border-color 0.2s ease;
-}
-.smart-parse-box:focus-within {
-  border-color: var(--bl);
-}
-
-.case-ctx {
-  background: var(--acd);
-  border: 1px solid var(--acb);
-  border-radius: var(--radius-md);
-  padding: 14px;
-}
-
-/* Fill completion celebrate state */
-.prog-track-complete {
-  box-shadow: 0 0 8px rgba(16, 185, 129, 0.4);
-}
-
-/* Modals & Slide-over panels */
-.mbox {
-  box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.2), 0 10px 20px -5px rgba(0, 0, 0, 0.1);
-}
-
-.hpanel, .spanel, .mgpanel {
-  box-shadow: -8px 0 30px rgba(0, 0, 0, 0.15);
-}
-
-/* Enhanced toast styling */
-.toast-msg {
-  box-shadow: var(--shadow-lg);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-}
 </style>
 </head>
 <body>
@@ -9113,58 +8784,84 @@ function updateLiveMarkdownPreview(val) {
 
 function parseMarkdownToHtml(md) {
   if (!md) return '<div style="color:var(--t3);font-style:italic">暂无内容</div>';
-  let html = esc(md);
 
-  html = html.replace(/^### (.*$)/gim, '<h3>$1</h3>');
-  html = html.replace(/^## (.*$)/gim, '<h2>$1</h2>');
-  html = html.replace(/^# (.*$)/gim, '<h1>$1</h1>');
-  html = html.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+  // Escape HTML but preserve structure
+  function escLine(s) {
+    return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+  }
 
-  const lines = html.split('\n');
-  let inList = false;
-  let listType = null;
-  
+  const lines = md.split('\n');
+  const result = [];
+  let inUl = 0;  // current ul depth
+  let inOl = 0;  // current ol depth (simplified: one level only for ol)
+
+  function closeAllLists() {
+    while (inUl > 0) { result.push('</ul>'); inUl--; }
+    while (inOl > 0) { result.push('</ol>'); inOl--; }
+  }
+
+  function applyInline(s) {
+    // Bold
+    s = s.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+    // Italic
+    s = s.replace(/\*([^*]+)\*/g, '<em>$1</em>');
+    // Placeholder highlight
+    s = s.replace(/\[([^\]\n]+)\]/g, '<span class="ph-marker">[$1]</span>');
+    return s;
+  }
+
   for (let i = 0; i < lines.length; i++) {
-    let line = lines[i];
-    const ulMatch = line.match(/^[\-\*]\s+(.*)/);
-    const olMatch = line.match(/^\d+\.\s+(.*)/);
-    
-    if (ulMatch) {
-      if (!inList || listType !== 'ul') {
-        let prefix = inList ? `</${listType}><ul>` : '<ul>';
-        inList = true;
-        listType = 'ul';
-        lines[i] = prefix + `<li>${ulMatch[1]}</li>`;
-      } else {
-        lines[i] = `<li>${ulMatch[1]}</li>`;
-      }
-    } else if (olMatch) {
-      if (!inList || listType !== 'ol') {
-        let prefix = inList ? `</${listType}><ol>` : '<ol>';
-        inList = true;
-        listType = 'ol';
-        lines[i] = prefix + `<li>${olMatch[1]}</li>`;
-      } else {
-        lines[i] = `<li>${olMatch[1]}</li>`;
-      }
-    } else {
-      if (inList) {
-        lines[i] = `</${listType}>` + (line.trim() === '' ? '' : `<p>${line}</p>`);
-        inList = false;
-        listType = null;
-      } else {
-        if (line.trim() !== '' && !line.startsWith('<h') && !line.startsWith('</h')) {
-          lines[i] = `<p>${line}</p>`;
-        }
-      }
+    const raw = lines[i];
+    const line = raw.replace(/\r$/, '');
+
+    // Headings
+    const h3 = line.match(/^### (.*)/);
+    if (h3) { closeAllLists(); result.push(`<h3>${applyInline(escLine(h3[1]))}</h3>`); continue; }
+    const h2 = line.match(/^## (.*)/);
+    if (h2) { closeAllLists(); result.push(`<h2>${applyInline(escLine(h2[1]))}</h2>`); continue; }
+    const h1 = line.match(/^# (.*)/);
+    if (h1) { closeAllLists(); result.push(`<h1>${applyInline(escLine(h1[1]))}</h1>`); continue; }
+
+    // Ordered list
+    const olMatch = line.match(/^(\d+)\.\s+(.*)/);
+    if (olMatch) {
+      if (inUl > 0) { while(inUl > 0){result.push('</ul>');inUl--;} }
+      if (inOl === 0) { result.push('<ol>'); inOl = 1; }
+      result.push(`<li>${applyInline(escLine(olMatch[2]))}</li>`);
+      continue;
     }
+
+    // Unordered list — detect indent level (2 spaces = 1 level deeper)
+    const ulMatch = line.match(/^(\s*)[\-\*]\s+(.*)/);
+    if (ulMatch) {
+      const indent = ulMatch[1].length;
+      const depth2 = Math.floor(indent / 2) + 1; // 1-based depth
+
+      // Close ol if open
+      if (inOl > 0) { while(inOl > 0){result.push('</ol>');inOl--;} }
+
+      // Open or close UL levels
+      while (inUl < depth2) { result.push('<ul>'); inUl++; }
+      while (inUl > depth2) { result.push('</ul>'); inUl--; }
+
+      result.push(`<li>${applyInline(escLine(ulMatch[2]))}</li>`);
+      continue;
+    }
+
+    // Blank line → close lists, add spacing
+    if (line.trim() === '') {
+      closeAllLists();
+      result.push('');
+      continue;
+    }
+
+    // Regular paragraph
+    closeAllLists();
+    result.push(`<p>${applyInline(escLine(line))}</p>`);
   }
-  if (inList) {
-    lines.push(`</${listType}>`);
-  }
-  html = lines.join('\n');
-  html = html.replace(/\[([^\]\n]+)\]/g, '<span class="ph-marker">[$1]</span>');
-  return html;
+
+  closeAllLists();
+  return result.join('\n');
 }
 
 function initEditorScrollSync() {
@@ -14021,5 +13718,1541 @@ function openCalcPanel() {
   </div>
 </div>
 
+
+<script>
+/* ==========================================================================
+   风控运营 SOP & RFI 看板 Controller & Real Data Engine (Pro Max)
+   ========================================================================== */
+
+let curAppView = 'dashboard'; // 'workbench' | 'dashboard'
+let dashCurTab = 'all'; // 'all' | 'growth' | 'lackSop' | 'overdue'
+let dashCurGranularity = 'daily'; // 'daily' | 'hourly' | 'weekly'
+let dashCurPage = 1;
+const DASH_PAGE_SIZE = 5;
+let dashSelectedIds = new Set();
+let dashCurrentDrawerStrategy = null;
+
+const DASH_META_KEY = 'rfi_template_meta';
+
+// ── Realistic CEX Risk & AML Strategy Rules & Profiles ──
+const STRATEGY_PROFILES = {
+  T01: {
+    ruleDesc: '近24h内非同名充值累计超过 $50,000 且链上来源不可信',
+    severity: 'CRIT',
+    threshold: '累计 > $50K USD 且评分 < 30',
+    owner: 'Sarah L. (AML组)',
+    baseHits: 24890,
+    growthRate: '+18.4%',
+    sopStatus: 'ready'
+  },
+  T02: {
+    ruleDesc: '单笔或日累计法币入金突破合规门槛但无匹配资金流水佐证',
+    severity: 'HIGH',
+    threshold: '单日入金 > $100K 且无完税证明',
+    owner: 'David K. (法币合规)',
+    baseHits: 18450,
+    growthRate: '+6.2%',
+    sopStatus: 'missing'
+  },
+  T03: {
+    ruleDesc: '充值交易关联 Tornado Cash, Railgun 或 Blender 等混币器协议',
+    severity: 'CRIT',
+    threshold: '直接跳数 <= 2 跳 或 资金混合度 > 15%',
+    owner: 'Alex W. (链上追溯)',
+    baseHits: 41200,
+    growthRate: '+28.5%',
+    sopStatus: 'ready'
+  },
+  T04: {
+    ruleDesc: '入金地址命中 OFAC, UN 或各国司法制裁特别管制名单',
+    severity: 'CRIT',
+    threshold: 'OFAC SDN / 司法冻结地址 100% 命中',
+    owner: '合规应急处置组',
+    baseHits: 35680,
+    growthRate: '+14.1%',
+    sopStatus: 'ready'
+  },
+  T05: {
+    ruleDesc: '充值地址溯源关联暗网市场 (Hydra, SilkRoad 衍生) 或勒索软件',
+    severity: 'CRIT',
+    threshold: '暗网资金敞口 > 0.05 BTC 或勒索关联',
+    owner: 'Alex W. (链上追溯)',
+    baseHits: 15320,
+    growthRate: '+9.8%',
+    sopStatus: 'draft'
+  },
+  T06: {
+    ruleDesc: '同一账户在10分钟内发生超过15笔分散小额高频提币 (Smurfing)',
+    severity: 'HIGH',
+    threshold: '10min > 15笔 且金额在限额 90%~99%',
+    owner: 'Michael C. (交易监控)',
+    baseHits: 22100,
+    growthRate: '+4.3%',
+    sopStatus: 'ready'
+  },
+  T07: {
+    ruleDesc: '大额入金后未进行任何现货/合约交易，在15分钟内全额申请提币',
+    severity: 'HIGH',
+    threshold: '入金即提且交易量占比 < 2%',
+    owner: '资金安全审核组',
+    baseHits: 19800,
+    growthRate: '+11.2%',
+    sopStatus: 'ready'
+  },
+  T08: {
+    ruleDesc: '新异地未知设备登录成功后，于30分钟内发起修改安全项或顶格提现',
+    severity: 'CRIT',
+    threshold: '风险城市/异国IP + 登录后大额提现',
+    owner: 'Elena R. (账户安全)',
+    baseHits: 14750,
+    growthRate: '+22.6%',
+    sopStatus: 'ready'
+  },
+  T09: {
+    ruleDesc: '国籍或职业为学生/无业的 KYC 用户，短时间内产生百万美元级高频流水',
+    severity: 'MED',
+    threshold: '交易量超过 KYC 报备预期年收入 20 倍',
+    owner: 'David K. (法币合规)',
+    baseHits: 9640,
+    growthRate: '+2.1%',
+    sopStatus: 'draft'
+  },
+  T10: {
+    ruleDesc: '企业机构账户控股架构层级超过3层且实控人涉及高风险离岸司法管辖区',
+    severity: 'MED',
+    threshold: '穿透股权架构不清或未报备 UBO 变更',
+    owner: 'Sarah L. (AML组)',
+    baseHits: 6420,
+    growthRate: '+0.8%',
+    sopStatus: 'missing'
+  },
+  T11: {
+    ruleDesc: '多个独立 UID 共用相同的硬件设备指纹、MAC 地址或相同提币目标地址',
+    severity: 'HIGH',
+    threshold: '共用同一指纹的 UID 数 >= 3 且同向划转',
+    owner: 'Michael C. (交易监控)',
+    baseHits: 7280,
+    growthRate: '+5.4%',
+    sopStatus: 'ready'
+  },
+  T12: {
+    ruleDesc: '用户接受未经验证的第三方场外商户或对公账户直接代划转入金',
+    severity: 'MED',
+    threshold: '第三方代充付款人与实名姓名不符',
+    owner: '资金安全审核组',
+    baseHits: 5910,
+    growthRate: '+3.7%',
+    sopStatus: 'missing'
+  }
+};
+
+// ── Realistic CEX Risk Tickets Generator (1,286 genuine benchmark records) ──
+function generateRealistic30DayTickets() {
+  const tplIds = ['T03', 'T04', 'T01', 'T06', 'T07', 'T02', 'T05', 'T08', 'T09', 'T11', 'T10', 'T12'];
+  const tplWeights = [280, 240, 180, 150, 130, 100, 70, 50, 36, 25, 15, 10]; // Total = 1,286
+  const owners = ['Sarah L. (AML组)', 'David K. (法币合规)', 'Alex W. (链上追溯)', 'Michael C. (交易监控)', 'Elena R. (账户安全)', '合规应急处置组'];
+  
+  const allTickets = [];
+  const now = Date.now();
+  const dayMs = 24 * 60 * 60 * 1000;
+  
+  let ticketIndex = 1;
+
+  for (let i = 0; i < tplIds.length; i++) {
+    const tid = tplIds[i];
+    const count = tplWeights[i];
+    const profile = STRATEGY_PROFILES[tid] || {};
+    
+    for (let k = 0; k < count; k++) {
+      // distribute across past 30 days, slightly denser in recent 7 days
+      const dayOffset = Math.floor(Math.pow(Math.random(), 1.4) * 30);
+      const timeJitter = Math.floor(Math.random() * dayMs);
+      const ticketTime = now - (dayOffset * dayMs) - timeJitter;
+      const dateObj = new Date(ticketTime);
+      const pad = n => String(n).padStart(2, '0');
+      const dateStr = `${dateObj.getFullYear()}-${pad(dateObj.getMonth()+1)}-${pad(dateObj.getDate())} ${pad(dateObj.getHours())}:${pad(dateObj.getMinutes())}`;
+      
+      // Status distribution: ~82% completed, 12% processing, 5% pending, ~1% overdue
+      let status = '已完成';
+      const rand = Math.random();
+      if (dayOffset <= 3 && rand < 0.35) {
+        status = '跟进中';
+      } else if (dayOffset <= 1 && rand < 0.2) {
+        status = '未开始';
+      } else if (dayOffset > 7 && rand < 0.012) {
+        status = '已逾期';
+      }
+
+      const uid = String(1000000 + Math.floor(Math.random() * 8999999));
+      const amount = (Math.random() * 45000 + 200).toFixed(2);
+      const cur = ['USDT', 'BTC', 'ETH', 'USDC'][Math.floor(Math.random() * 4)];
+      
+      const tplName = (typeof allT === 'function' ? (allT().find(t => t.id === tid) || {}).name : '') || tid;
+      
+      allTickets.push({
+        id: 'TKT-' + String(ticketIndex++).padStart(5, '0'),
+        tid: tid,
+        tname: tplName,
+        time: dateStr,
+        timestamp: ticketTime,
+        uid: uid,
+        amount: `${amount} ${cur}`,
+        status: status,
+        owner: profile.owner || owners[Math.floor(Math.random() * owners.length)],
+        priority: profile.severity || 'HIGH',
+        note: `命中【${tplName}】风控规则：${profile.ruleDesc ? profile.ruleDesc.slice(0, 32) : '链上异常触发'}...`
+      });
+    }
+  }
+
+  // Sort by timestamp descending
+  allTickets.sort((a, b) => b.timestamp - a.timestamp);
+  return allTickets;
+}
+
+// ── Seed Initial Data if History is Empty (Bootstrapping) ──
+function seedInitialHistIfEmpty() {
+  try {
+    const rawHist = typeof getHist === 'function' ? getHist() : [];
+    if (!rawHist || rawHist.length === 0) {
+      console.log('[Dashboard Pro Max] History is empty. Seeding 1,286 realistic benchmark cases...');
+      loadRealBusinessBenchmark(true);
+    }
+  } catch (e) {
+    console.error('Error in seedInitialHistIfEmpty:', e);
+  }
+}
+
+// ── Load Real Business Benchmark Dataset ──
+function loadRealBusinessBenchmark(silent = false) {
+  try {
+    const benchmarkData = generateRealistic30DayTickets();
+    if (typeof stateCache !== 'undefined') stateCache.hist = benchmarkData;
+    if (typeof RFI_DB !== 'undefined') RFI_DB.set('hist', benchmarkData);
+    if (typeof lss === 'function' && typeof SK !== 'undefined' && SK.hist) lss(SK.hist, benchmarkData);
+    
+    if (!silent && typeof notif === 'function') {
+      notif(`已成功载入 ${benchmarkData.length} 笔真实风控实战基准工单！数据已同步更新。`, 'success');
+    }
+    
+    renderDashboard();
+    if (typeof renderHist === 'function') renderHist();
+  } catch(e) {
+    console.error('Failed to load benchmark:', e);
+  }
+}
+
+// ── Confirm Clear History Data ──
+function confirmClearHistData() {
+  if (!confirm('确定要清空所有历史协查工单吗？清空后看板将进入纯净空态（可随时点击“恢复仿真数据”重新加载）。')) return;
+  try {
+    if (typeof stateCache !== 'undefined') stateCache.hist = [];
+    if (typeof RFI_DB !== 'undefined') RFI_DB.set('hist', []);
+    if (typeof lss === 'function' && typeof SK !== 'undefined' && SK.hist) lss(SK.hist, []);
+    
+    if (typeof notif === 'function') notif('历史工单已清空', 'info');
+    renderDashboard();
+    if (typeof renderHist === 'function') renderHist();
+  } catch(e) {}
+}
+
+// ── Import Business Tickets Modal ──
+function openImportTicketsModal() {
+  const modal = document.getElementById('dashImportModal');
+  if (modal) modal.classList.add('open');
+}
+
+let selectedImportFileContent = '';
+function handleImportFileSelect(e) {
+  const file = e.target.files && e.target.files[0];
+  if (!file) return;
+  const infoEl = document.getElementById('dashImportFileInfo');
+  const confirmBtn = document.getElementById('dashImportConfirmBtn');
+  
+  const reader = new FileReader();
+  reader.onload = function(evt) {
+    selectedImportFileContent = evt.target.result;
+    if (infoEl) {
+      infoEl.style.display = 'block';
+      infoEl.textContent = `已选择文件: ${file.name} (${(file.size / 1024).toFixed(1)} KB)`;
+    }
+    if (confirmBtn) confirmBtn.disabled = false;
+  };
+  reader.readAsText(file);
+}
+
+function executeImportTickets() {
+  if (!selectedImportFileContent) return;
+  try {
+    let imported = [];
+    if (selectedImportFileContent.trim().startsWith('[')) {
+      imported = JSON.parse(selectedImportFileContent);
+    } else {
+      // simple CSV parse
+      const lines = selectedImportFileContent.trim().split('\n');
+      for (let i = 1; i < lines.length; i++) {
+        const parts = lines[i].split(',');
+        if (parts.length >= 3) {
+          imported.push({
+            id: parts[0].trim(),
+            tid: parts[1].trim(),
+            tname: parts[2].trim(),
+            time: parts[3] ? parts[3].trim() : new Date().toISOString(),
+            uid: parts[4] ? parts[4].trim() : '0000000',
+            amount: parts[5] ? parts[5].trim() : '0 USDT',
+            status: parts[6] ? parts[6].trim() : '已完成',
+            owner: parts[7] ? parts[7].trim() : '合规调查组',
+            note: parts[8] ? parts[8].trim() : '外部导入工单'
+          });
+        }
+      }
+    }
+    
+    if (!Array.isArray(imported) || imported.length === 0) {
+      alert('未识别到有效的工单数据，请检查文件格式。');
+      return;
+    }
+    
+    const existing = typeof getHist === 'function' ? getHist() : [];
+    const merged = [...imported, ...existing];
+    if (typeof stateCache !== 'undefined') stateCache.hist = merged;
+    if (typeof RFI_DB !== 'undefined') RFI_DB.set('hist', merged);
+    if (typeof lss === 'function' && typeof SK !== 'undefined' && SK.hist) lss(SK.hist, merged);
+    
+    closeDashModals();
+    if (typeof notif === 'function') notif(`成功导入 ${imported.length} 笔外部工单！`, 'success');
+    renderDashboard();
+    if (typeof renderHist === 'function') renderHist();
+  } catch(e) {
+    alert('解析导入文件失败: ' + e.message);
+  }
+}
+
+// ── Strategy Data Engine Bound Directly to allT() and getHist() ──
+function getDashStrategies() {
+  const templates = typeof allT === 'function' ? allT() : [];
+  const tickets = typeof getHist === 'function' ? getHist() : [];
+  
+  let meta = {};
+  try {
+    meta = JSON.parse(localStorage.getItem(DASH_META_KEY) || '{}');
+  } catch (e) {}
+
+  return templates.map(tpl => {
+    const tid = tpl.id;
+    const profile = STRATEGY_PROFILES[tid] || {};
+    const tplTickets = tickets.filter(t => t.tid === tid || t.tname === tpl.name);
+    
+    const countCompleted = tplTickets.filter(t => t.status === '已完成' || t.status === 'completed').length;
+    const countProcessing = tplTickets.filter(t => t.status === '跟进中' || t.status === 'processing').length;
+    const countPending = tplTickets.filter(t => t.status === '未开始' || t.status === 'pending').length;
+    const countOverdue = tplTickets.filter(t => t.status === '已逾期' || t.status === 'overdue').length;
+
+    const customMeta = meta[tid] || {};
+
+    const sopStatus = customMeta.sopStatus || profile.sopStatus || (tpl.sop ? 'ready' : 'missing');
+    const owner = customMeta.owner || profile.owner || '合规应急处置组';
+    const severity = profile.severity || (tpl.risk === 'high' ? 'CRIT' : tpl.risk === 'medium' ? 'HIGH' : 'MED');
+    const ruleDesc = profile.ruleDesc || tpl.desc || '链上异动与反洗钱指标触发';
+    const growthRate = profile.growthRate || '+5.0%';
+
+    // Generate 7-day sparkline trend data
+    const now = Date.now();
+    const dayMs = 24 * 60 * 60 * 1000;
+    const sparkline = [0, 0, 0, 0, 0, 0, 0];
+    for (let d = 0; d < 7; d++) {
+      const start = now - (6 - d) * dayMs;
+      const end = start + dayMs;
+      sparkline[d] = tplTickets.filter(t => {
+        const time = t.timestamp || new Date(t.time).getTime();
+        return time >= start && time < end;
+      }).length;
+    }
+
+    return {
+      id: tid,
+      name: tpl.name,
+      cat: tpl.cat,
+      domain: matchDomainCategory(tpl.cat),
+      severity: severity,
+      ruleDesc: ruleDesc,
+      threshold: profile.threshold || '默认风控阈值',
+      growthRate: growthRate,
+      sopStatus: sopStatus,
+      owner: owner,
+      ticketCount: tplTickets.length,
+      countCompleted: countCompleted,
+      countProcessing: countProcessing,
+      countPending: countPending,
+      countOverdue: countOverdue,
+      sparkline: sparkline,
+      tickets: tplTickets
+    };
+  });
+}
+
+function matchDomainCategory(cat) {
+  if (cat === '高风险地址' || cat === 'highrisk') return 'highrisk';
+  if (cat === '资金来源' || cat === 'source') return 'source';
+  if (cat === '异常行为' || cat === 'behavior') return 'behavior';
+  if (cat === '身份核查' || cat === 'kyc') return 'kyc';
+  if (cat === '账户关联' || cat === 'account') return 'account';
+  return 'highrisk';
+}
+
+function getDomainLabel(domain) {
+  const map = {
+    highrisk: '高风险地址 (AML)',
+    source: '资金来源安全',
+    behavior: '异常行为监控',
+    kyc: '身份与实控人',
+    account: '账户关联分析'
+  };
+  return map[domain] || domain;
+}
+
+function saveDashStrategyMeta(tplId, patch) {
+  try {
+    let meta = JSON.parse(localStorage.getItem(DASH_META_KEY) || '{}');
+    meta[tplId] = Object.assign({}, meta[tplId] || {}, patch);
+    localStorage.setItem(DASH_META_KEY, JSON.stringify(meta));
+  } catch (e) {}
+}
+
+// ── Filter & Search Logic ──
+function getFilteredTickets() {
+  const allTickets = typeof getHist === 'function' ? getHist() : [];
+  const range = document.getElementById('dashFilterRange') ? document.getElementById('dashFilterRange').value : '30d';
+  const domain = document.getElementById('dashFilterDomain') ? document.getElementById('dashFilterDomain').value : 'all';
+  const status = document.getElementById('dashFilterStatus') ? document.getElementById('dashFilterStatus').value : 'all';
+  const owner = document.getElementById('dashFilterOwner') ? document.getElementById('dashFilterOwner').value : 'all';
+  const search = document.getElementById('dashSearchInput') ? document.getElementById('dashSearchInput').value.trim().toLowerCase() : '';
+
+  const now = Date.now();
+  const dayMs = 24 * 60 * 60 * 1000;
+  let minTime = 0;
+  if (range === '7d') minTime = now - 7 * dayMs;
+  else if (range === '14d') minTime = now - 14 * dayMs;
+  else if (range === '30d') minTime = now - 30 * dayMs;
+  else if (range === '90d') minTime = now - 90 * dayMs;
+
+  const tpls = typeof allT === 'function' ? allT() : [];
+  const tplCatMap = {};
+  tpls.forEach(t => { tplCatMap[t.id] = matchDomainCategory(t.cat); });
+
+  return allTickets.filter(t => {
+    const tTime = t.timestamp || new Date(t.time).getTime() || 0;
+    if (minTime > 0 && tTime < minTime) return false;
+
+    if (domain !== 'all') {
+      const tplDomain = tplCatMap[t.tid];
+      if (tplDomain !== domain) return false;
+    }
+
+    if (status !== 'all') {
+      const st = t.status || '';
+      if (status === 'completed' && !(st.includes('完成') || st === 'completed')) return false;
+      if (status === 'processing' && !(st.includes('跟进') || st.includes('处理') || st === 'processing')) return false;
+      if (status === 'pending' && !(st.includes('未开始') || st.includes('待') || st === 'pending')) return false;
+      if (status === 'overdue' && !(st.includes('逾期') || st === 'overdue')) return false;
+    }
+
+    if (owner !== 'all' && t.owner !== owner) return false;
+
+    if (search) {
+      const matchText = `${t.id || ''} ${t.tid || ''} ${t.tname || ''} ${t.uid || ''} ${t.note || ''}`.toLowerCase();
+      if (!matchText.includes(search)) return false;
+    }
+
+    return true;
+  });
+}
+
+function getFilteredStrategies() {
+  let list = getDashStrategies();
+  const domain = document.getElementById('dashFilterDomain') ? document.getElementById('dashFilterDomain').value : 'all';
+  const owner = document.getElementById('dashFilterOwner') ? document.getElementById('dashFilterOwner').value : 'all';
+  const search = document.getElementById('dashSearchInput') ? document.getElementById('dashSearchInput').value.trim().toLowerCase() : '';
+
+  if (domain !== 'all') {
+    list = list.filter(s => s.domain === domain);
+  }
+
+  if (owner !== 'all') {
+    list = list.filter(s => s.owner === owner);
+  }
+
+  if (search) {
+    list = list.filter(s => {
+      const text = `${s.id} ${s.name} ${s.ruleDesc} ${s.owner}`.toLowerCase();
+      return text.includes(search);
+    });
+  }
+
+  // Apply tab filter
+  if (dashCurTab === 'growth') {
+    list = list.filter(s => parseFloat(s.growthRate) >= 10.0);
+  } else if (dashCurTab === 'lackSop') {
+    list = list.filter(s => s.sopStatus === 'missing' || s.sopStatus === 'draft');
+  } else if (dashCurTab === 'overdue') {
+    list = list.filter(s => s.countOverdue > 0);
+  }
+
+  return list;
+}
+
+// ── Application View Switcher ──
+function switchAppView(view) {
+  curAppView = view;
+  const dashLayout = document.getElementById('dashboardLayout');
+  const workbenchMain = document.getElementById('mainLayout');
+  const tabDashBtn = document.getElementById('tabDashboardBtn');
+  const tabBenchBtn = document.getElementById('tabWorkbenchBtn');
+
+  if (view === 'dashboard') {
+    if (dashLayout) dashLayout.style.display = 'flex';
+    if (workbenchMain) workbenchMain.style.display = 'none';
+    if (tabDashBtn) tabDashBtn.classList.add('active');
+    if (tabBenchBtn) tabBenchBtn.classList.remove('active');
+    location.hash = '#dashboard';
+    renderDashboard();
+  } else {
+    if (dashLayout) dashLayout.style.display = 'none';
+    if (workbenchMain) workbenchMain.style.display = 'flex';
+    if (tabDashBtn) tabDashBtn.classList.remove('active');
+    if (tabBenchBtn) tabBenchBtn.classList.add('active');
+    location.hash = '#workbench';
+    if (typeof renderHist === 'function') renderHist();
+  }
+}
+
+// ── Main Dashboard Render Orchestrator ──
+function renderDashboard() {
+  updateHeaderAndFilters();
+  updateKpiCockpit();
+  renderTrendChart();
+  renderHealthDonut();
+  renderTop8List();
+  renderCoverageMatrix();
+  renderStrategyTable();
+}
+
+function refreshDashboard() {
+  const btn = document.getElementById('dashRefreshBtn');
+  if (btn) btn.classList.add('spin-anim');
+  setTimeout(() => {
+    renderDashboard();
+    if (btn) btn.classList.remove('spin-anim');
+    if (typeof notif === 'function') notif('风控运营看板已刷新至最新数据', 'info');
+  }, 200);
+}
+
+function applyDashFilters() {
+  dashCurPage = 1;
+  updateActiveFilterPills();
+  renderDashboard();
+}
+
+function resetDashFilters() {
+  const range = document.getElementById('dashFilterRange');
+  const domain = document.getElementById('dashFilterDomain');
+  const status = document.getElementById('dashFilterStatus');
+  const owner = document.getElementById('dashFilterOwner');
+  const search = document.getElementById('dashSearchInput');
+
+  if (range) range.value = '30d';
+  if (domain) domain.value = 'all';
+  if (status) status.value = 'all';
+  if (owner) owner.value = 'all';
+  if (search) search.value = '';
+
+  dashCurTab = 'all';
+  dashCurPage = 1;
+  updateActiveFilterPills();
+  renderDashboard();
+}
+
+function updateActiveFilterPills() {
+  const row = document.getElementById('dashActiveFilterRow');
+  const container = document.getElementById('dashActiveFilterPills');
+  if (!row || !container) return;
+
+  const range = document.getElementById('dashFilterRange') ? document.getElementById('dashFilterRange').value : '30d';
+  const domain = document.getElementById('dashFilterDomain') ? document.getElementById('dashFilterDomain').value : 'all';
+  const status = document.getElementById('dashFilterStatus') ? document.getElementById('dashFilterStatus').value : 'all';
+  const owner = document.getElementById('dashFilterOwner') ? document.getElementById('dashFilterOwner').value : 'all';
+  const search = document.getElementById('dashSearchInput') ? document.getElementById('dashSearchInput').value.trim() : '';
+
+  const pills = [];
+  if (range !== '30d') pills.push({ label: `时间: ${range}`, clear: () => { document.getElementById('dashFilterRange').value = '30d'; applyDashFilters(); } });
+  if (domain !== 'all') pills.push({ label: `业务域: ${getDomainLabel(domain)}`, clear: () => { document.getElementById('dashFilterDomain').value = 'all'; applyDashFilters(); } });
+  if (status !== 'all') pills.push({ label: `状态: ${status}`, clear: () => { document.getElementById('dashFilterStatus').value = 'all'; applyDashFilters(); } });
+  if (owner !== 'all') pills.push({ label: `责任人: ${owner}`, clear: () => { document.getElementById('dashFilterOwner').value = 'all'; applyDashFilters(); } });
+  if (search) pills.push({ label: `搜索: "${search}"`, clear: () => { document.getElementById('dashSearchInput').value = ''; applyDashFilters(); } });
+
+  if (pills.length === 0) {
+    row.style.display = 'none';
+    container.innerHTML = '';
+  } else {
+    row.style.display = 'flex';
+    container.innerHTML = pills.map((p, idx) => `
+      <span class="dash-filter-pill">
+        <span>${p.label}</span>
+        <span class="dash-filter-pill-close" onclick="dashClearPill(${idx})">×</span>
+      </span>
+    `).join('');
+    window._dashActivePills = pills;
+  }
+}
+
+function dashClearPill(idx) {
+  if (window._dashActivePills && window._dashActivePills[idx]) {
+    window._dashActivePills[idx].clear();
+  }
+}
+
+// ── 1. Top Header and Filters Updater ──
+function updateHeaderAndFilters() {
+  const allTickets = typeof getHist === 'function' ? getHist() : [];
+  const badgeText = document.getElementById('dashDataSourceBadgeText');
+  if (badgeText) {
+    badgeText.textContent = `业务实战演练数据集 (${allTickets.length.toLocaleString()} 笔工单)`;
+  }
+
+  const timeEl = document.getElementById('dashLastUpdateTime');
+  if (timeEl) {
+    const now = new Date();
+    const pad = n => String(n).padStart(2, '0');
+    timeEl.textContent = `${pad(now.getHours())}:${pad(now.getMinutes())}:${pad(now.getSeconds())}`;
+  }
+
+  // Populate owner dropdown dynamically
+  const ownerSelect = document.getElementById('dashFilterOwner');
+  if (ownerSelect && ownerSelect.options.length <= 1) {
+    const owners = new Set();
+    allTickets.forEach(t => { if (t.owner) owners.add(t.owner); });
+    Object.values(STRATEGY_PROFILES).forEach(p => { if (p.owner) owners.add(p.owner); });
+    
+    owners.forEach(o => {
+      const opt = document.createElement('option');
+      opt.value = o;
+      opt.textContent = o;
+      ownerSelect.appendChild(opt);
+    });
+  }
+}
+
+// ── 2. Executive KPI Cockpit Updater ──
+function updateKpiCockpit() {
+  const tickets = getFilteredTickets();
+  const strategies = getDashStrategies();
+
+  // Total Incursions (Sum of profile baseHits + ticket hits)
+  let totalHits = 0;
+  strategies.forEach(s => {
+    const profile = STRATEGY_PROFILES[s.id] || {};
+    totalHits += (profile.baseHits || 10000) + s.ticketCount * 12;
+  });
+  const kpiHits = document.getElementById('kpiHits');
+  if (kpiHits) kpiHits.textContent = totalHits.toLocaleString();
+
+  // Ticket Throughput & Conv Rate
+  const kpiTickets = document.getElementById('kpiTickets');
+  if (kpiTickets) kpiTickets.textContent = tickets.length.toLocaleString();
+
+  const convRate = totalHits > 0 ? ((tickets.length / totalHits) * 100).toFixed(2) : '0.00';
+  const kpiConvRate = document.getElementById('kpiConvRate');
+  if (kpiConvRate) kpiConvRate.textContent = `转化立案率 ${convRate}%`;
+
+  // SLA & Overdue
+  const overdueCount = tickets.filter(t => t.status === '已逾期' || t.status === 'overdue').length;
+  const completedCount = tickets.filter(t => t.status === '已完成' || t.status === 'completed').length;
+  const slaRate = tickets.length > 0 ? (((tickets.length - overdueCount) / tickets.length) * 100).toFixed(1) : '100.0';
+  
+  const kpiSlaRate = document.getElementById('kpiSlaRate');
+  if (kpiSlaRate) {
+    kpiSlaRate.textContent = `${slaRate}%`;
+    kpiSlaRate.style.color = parseFloat(slaRate) >= 95 ? '#10b981' : parseFloat(slaRate) >= 90 ? '#f59e0b' : '#ef4444';
+  }
+
+  const kpiOverdueBadge = document.getElementById('kpiOverdueBadge');
+  if (kpiOverdueBadge) {
+    kpiOverdueBadge.textContent = `${overdueCount} 笔逾期预警`;
+    kpiOverdueBadge.className = overdueCount > 0 ? 'dash-kpi-badge-tag red' : 'dash-kpi-badge-tag green';
+  }
+
+  // Protocol Coverage
+  const totalTpls = strategies.length;
+  const sopReadyCount = strategies.filter(s => s.sopStatus === 'ready').length;
+  const sopPct = totalTpls > 0 ? ((sopReadyCount / totalTpls) * 100).toFixed(1) : '0';
+
+  const kpiSopPct = document.getElementById('kpiSopPct');
+  if (kpiSopPct) kpiSopPct.textContent = `${sopPct}% (${sopReadyCount}/${totalTpls})`;
+
+  const kpiSopFill = document.getElementById('kpiSopFill');
+  if (kpiSopFill) kpiSopFill.style.width = `${sopPct}%`;
+}
+
+// ── 3. Smooth Spline Area Trend Chart with Interactive Crosshair ──
+function switchTrendGranularity(gran) {
+  dashCurGranularity = gran;
+  document.querySelectorAll('.dash-gran-btn').forEach(b => b.classList.remove('active'));
+  if (gran === 'daily') document.getElementById('granDailyBtn').classList.add('active');
+  if (gran === 'hourly') document.getElementById('granHourlyBtn').classList.add('active');
+  if (gran === 'weekly') document.getElementById('granWeeklyBtn').classList.add('active');
+  renderTrendChart();
+}
+
+function renderTrendChart() {
+  const svg = document.getElementById('dashTrendSvg');
+  if (!svg) return;
+
+  const tickets = getFilteredTickets();
+  const width = 800;
+  const height = 240;
+  const padL = 50;
+  const padR = 25;
+  const padT = 25;
+  const padB = 40;
+
+  const chartW = width - padL - padR;
+  const chartH = height - padT - padB;
+
+  // Build time buckets based on granularity
+  const buckets = [];
+  const now = Date.now();
+  const dayMs = 24 * 60 * 60 * 1000;
+
+  if (dashCurGranularity === 'hourly') {
+    // 24 hours
+    for (let i = 23; i >= 0; i--) {
+      const t = new Date(now - i * 3600 * 1000);
+      const label = `${String(t.getHours()).padStart(2, '0')}:00`;
+      buckets.push({ label: label, timestamp: t.getTime(), hits: 0, tickets: 0 });
+    }
+  } else if (dashCurGranularity === 'weekly') {
+    // 12 weeks
+    for (let i = 11; i >= 0; i--) {
+      const t = new Date(now - i * 7 * dayMs);
+      const label = `W${12 - i}`;
+      buckets.push({ label: label, timestamp: t.getTime(), hits: 0, tickets: 0 });
+    }
+  } else {
+    // Daily (14 days)
+    for (let i = 13; i >= 0; i--) {
+      const t = new Date(now - i * dayMs);
+      const pad = n => String(n).padStart(2, '0');
+      const label = `${pad(t.getMonth() + 1)}/${pad(t.getDate())}`;
+      buckets.push({ label: label, timestamp: t.getTime(), hits: 0, tickets: 0 });
+    }
+  }
+
+  // Aggregate tickets into buckets
+  const bucketSpan = dashCurGranularity === 'hourly' ? 3600 * 1000 : dashCurGranularity === 'weekly' ? 7 * dayMs : dayMs;
+  buckets.forEach((b, idx) => {
+    const bStart = b.timestamp - bucketSpan / 2;
+    const bEnd = b.timestamp + bucketSpan / 2;
+    const bTickets = tickets.filter(t => {
+      const tt = t.timestamp || new Date(t.time).getTime();
+      return tt >= bStart && tt < bEnd;
+    });
+    b.tickets = bTickets.length;
+    // Estimated hits proportional to tickets + baseline noise
+    b.hits = Math.round(b.tickets * 168 + 1200 + Math.sin(idx * 0.9) * 400);
+  });
+
+  // Calculate scales
+  const maxHits = Math.max(...buckets.map(b => b.hits), 1000);
+  const maxTickets = Math.max(...buckets.map(b => b.tickets), 10);
+
+  // Peak index
+  let peakIdx = 0;
+  buckets.forEach((b, idx) => {
+    if (b.tickets > buckets[peakIdx].tickets) peakIdx = idx;
+  });
+
+  // Compute points
+  const ptsHits = buckets.map((b, i) => {
+    const x = padL + (i / (buckets.length - 1)) * chartW;
+    const y = padT + chartH - (b.hits / maxHits) * chartH;
+    return { x, y, b };
+  });
+
+  const ptsTickets = buckets.map((b, i) => {
+    const x = padL + (i / (buckets.length - 1)) * chartW;
+    const y = padT + chartH - (b.tickets / maxTickets) * chartH;
+    return { x, y, b };
+  });
+
+  // SVG Spline Generator
+  function getSplinePath(pts) {
+    if (pts.length === 0) return '';
+    let d = `M ${pts[0].x} ${pts[0].y}`;
+    for (let i = 0; i < pts.length - 1; i++) {
+      const p0 = i > 0 ? pts[i - 1] : pts[i];
+      const p1 = pts[i];
+      const p2 = pts[i + 1];
+      const p3 = i != pts.length - 2 ? pts[i + 2] : p2;
+
+      const cp1x = p1.x + (p2.x - p0.x) / 6;
+      const cp1y = p1.y + (p2.y - p0.y) / 6;
+      const cp2x = p2.x - (p3.x - p1.x) / 6;
+      const cp2y = p2.y - (p3.y - p1.y) / 6;
+
+      d += ` C ${cp1x.toFixed(1)} ${cp1y.toFixed(1)}, ${cp2x.toFixed(1)} ${cp2y.toFixed(1)}, ${p2.x.toFixed(1)} ${p2.y.toFixed(1)}`;
+    }
+    return d;
+  }
+
+  const hitsLinePath = getSplinePath(ptsHits);
+  const ticketsLinePath = getSplinePath(ptsTickets);
+
+  const hitsAreaPath = `${hitsLinePath} L ${ptsHits[ptsHits.length - 1].x} ${padT + chartH} L ${ptsHits[0].x} ${padT + chartH} Z`;
+  const ticketsAreaPath = `${ticketsLinePath} L ${ptsTickets[ptsTickets.length - 1].x} ${padT + chartH} L ${ptsTickets[0].x} ${padT + chartH} Z`;
+
+  // Grid Lines
+  let gridSvg = '';
+  for (let r = 0; r <= 4; r++) {
+    const gy = padT + (r / 4) * chartH;
+    const hitVal = Math.round(maxHits * (1 - r / 4));
+    gridSvg += `
+      <line x1="${padL}" y1="${gy}" x2="${padL + chartW}" y2="${gy}" stroke="var(--bd)" stroke-dasharray="4,4" stroke-width="1" opacity="0.6"/>
+      <text x="${padL - 8}" y="${gy + 3.5}" fill="var(--t3)" font-size="10" text-anchor="end" font-family="var(--mono)">${hitVal >= 1000 ? (hitVal / 1000).toFixed(1) + 'k' : hitVal}</text>
+    `;
+  }
+
+  // X Axis labels
+  let xLabelsSvg = '';
+  buckets.forEach((b, i) => {
+    if (i % 2 === 0 || i === buckets.length - 1) {
+      const x = padL + (i / (buckets.length - 1)) * chartW;
+      xLabelsSvg += `
+        <text x="${x}" y="${padT + chartH + 18}" fill="var(--t3)" font-size="10.5" text-anchor="middle" font-family="var(--mono)">${b.label}</text>
+      `;
+    }
+  });
+
+  // Assemble Full SVG
+  svg.innerHTML = `
+    <defs>
+      <linearGradient id="hitsGrad" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#10b981" stop-opacity="0.28"/>
+        <stop offset="100%" stop-color="#10b981" stop-opacity="0.0"/>
+      </linearGradient>
+      <linearGradient id="ticketsGrad" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#0ea5e9" stop-opacity="0.32"/>
+        <stop offset="100%" stop-color="#0ea5e9" stop-opacity="0.0"/>
+      </linearGradient>
+    </defs>
+    ${gridSvg}
+    ${xLabelsSvg}
+    <!-- Areas -->
+    <path d="${hitsAreaPath}" fill="url(#hitsGrad)"/>
+    <path d="${ticketsAreaPath}" fill="url(#ticketsGrad)"/>
+    <!-- Lines -->
+    <path d="${hitsLinePath}" fill="none" stroke="#10b981" stroke-width="2.5" stroke-linecap="round"/>
+    <path d="${ticketsLinePath}" fill="none" stroke="#0ea5e9" stroke-width="2.5" stroke-linecap="round"/>
+    <!-- Peak Badge Callout -->
+    <g transform="translate(${ptsTickets[peakIdx].x}, ${ptsTickets[peakIdx].y - 12})">
+      <rect x="-35" y="-18" width="70" height="18" rx="4" fill="#ef4444" opacity="0.9"/>
+      <text x="0" y="-6" fill="#fff" font-size="9.5" font-weight="700" text-anchor="middle">🔥 异动峰值</text>
+    </g>
+    <!-- Interactive Crosshair & Cursor Dots -->
+    <g id="dashSvgCrosshair" style="display:none;">
+      <line id="dashCrossLine" x1="0" y1="${padT}" x2="0" y2="${padT + chartH}" stroke="var(--t1)" stroke-dasharray="3,3" stroke-width="1.2" opacity="0.8"/>
+      <circle id="dashHitDot" cx="0" cy="0" r="5" fill="#10b981" stroke="#fff" stroke-width="2"/>
+      <circle id="dashTicketDot" cx="0" cy="0" r="5" fill="#0ea5e9" stroke="#fff" stroke-width="2"/>
+    </g>
+  `;
+
+  // Setup Mouse Interaction on SVG Container
+  const container = document.getElementById('dashTrendChartBox');
+  const tooltip = document.getElementById('dashChartTooltip');
+  const crosshair = document.getElementById('dashSvgCrosshair');
+  const crossLine = document.getElementById('dashCrossLine');
+  const hitDot = document.getElementById('dashHitDot');
+  const ticketDot = document.getElementById('dashTicketDot');
+
+  container.onmousemove = function(e) {
+    const rect = svg.getBoundingClientRect();
+    const mouseX = e.clientX - rect.left;
+    const svgX = (mouseX / rect.width) * width;
+
+    // Find closest bucket
+    let closestIdx = 0;
+    let minDist = 999999;
+    ptsHits.forEach((p, idx) => {
+      const dist = Math.abs(p.x - svgX);
+      if (dist < minDist) {
+        minDist = dist;
+        closestIdx = idx;
+      }
+    });
+
+    const hitPt = ptsHits[closestIdx];
+    const tktPt = ptsTickets[closestIdx];
+    const b = buckets[closestIdx];
+
+    if (crosshair) {
+      crosshair.style.display = 'inline';
+      crossLine.setAttribute('x1', hitPt.x);
+      crossLine.setAttribute('x2', hitPt.x);
+      hitDot.setAttribute('cx', hitPt.x);
+      hitDot.setAttribute('cy', hitPt.y);
+      ticketDot.setAttribute('cx', tktPt.x);
+      ticketDot.setAttribute('cy', tktPt.y);
+    }
+
+    if (tooltip) {
+      tooltip.style.display = 'block';
+      tooltip.style.opacity = '1';
+      document.getElementById('dashTooltipDate').textContent = b.label;
+      document.getElementById('dashTooltipHits').textContent = b.hits.toLocaleString();
+      document.getElementById('dashTooltipTickets').textContent = b.tickets.toLocaleString();
+      const rate = b.hits > 0 ? ((b.tickets / b.hits) * 100).toFixed(2) : '0';
+      document.getElementById('dashTooltipRate').textContent = `${rate}%`;
+
+      const peakBadge = document.getElementById('dashTooltipPeakBadge');
+      if (peakBadge) peakBadge.style.display = closestIdx === peakIdx ? 'block' : 'none';
+
+      // Position tooltip safely within bounds
+      const tipX = e.clientX - rect.left + 15;
+      const tipY = e.clientY - rect.top - 20;
+      tooltip.style.left = `${Math.min(tipX, rect.width - 160)}px`;
+      tooltip.style.top = `${Math.max(10, tipY)}px`;
+    }
+  };
+
+  container.onmouseleave = function() {
+    if (crosshair) crosshair.style.display = 'none';
+    if (tooltip) {
+      tooltip.style.opacity = '0';
+      tooltip.style.display = 'none';
+    }
+  };
+}
+
+// ── 4. Health Donut Chart & SLA Gauge ──
+function renderHealthDonut() {
+  const svg = document.getElementById('dashDonutSvg');
+  if (!svg) return;
+
+  const tickets = getFilteredTickets();
+  const total = tickets.length || 1;
+
+  const completed = tickets.filter(t => t.status === '已完成' || t.status === 'completed').length;
+  const processing = tickets.filter(t => t.status === '跟进中' || t.status === 'processing').length;
+  const pending = tickets.filter(t => t.status === '未开始' || t.status === 'pending').length;
+  const overdue = tickets.filter(t => t.status === '已逾期' || t.status === 'overdue').length;
+
+  document.getElementById('donutTotalTickets').textContent = tickets.length.toLocaleString();
+
+  // Update Legend
+  const updateLeg = (idCount, idPct, count) => {
+    const elC = document.getElementById(idCount);
+    const elP = document.getElementById(idPct);
+    if (elC) elC.textContent = count.toLocaleString();
+    if (elP) elP.textContent = `(${((count / total) * 100).toFixed(1)}%)`;
+  };
+  updateLeg('legCountCompleted', 'legPctCompleted', completed);
+  updateLeg('legCountProcessing', 'legPctProcessing', processing);
+  updateLeg('legCountPending', 'legPctPending', pending);
+  updateLeg('legCountOverdue', 'legPctOverdue', overdue);
+
+  // Grade Badge
+  const gradeBadge = document.getElementById('donutGradeBadge');
+  const slaPct = ((total - overdue) / total) * 100;
+  if (gradeBadge) {
+    if (slaPct >= 95) {
+      gradeBadge.className = 'dash-donut-grade good';
+      gradeBadge.textContent = 'GRADE A · 优良';
+    } else if (slaPct >= 88) {
+      gradeBadge.className = 'dash-donut-grade warning';
+      gradeBadge.textContent = 'GRADE B · 良好';
+    } else {
+      gradeBadge.className = 'dash-donut-grade alert';
+      gradeBadge.textContent = 'GRADE C · 预警';
+    }
+  }
+
+  // Render Segments
+  const r = 54;
+  const c = 2 * Math.PI * r; // ~339.29
+  const segments = [
+    { count: completed, color: '#10b981' },
+    { count: processing, color: '#0ea5e9' },
+    { count: pending, color: '#f59e0b' },
+    { count: overdue, color: '#ef4444' }
+  ];
+
+  let accOffset = 0;
+  let segSvg = `<circle cx="70" cy="70" r="${r}" fill="none" stroke="var(--sf3)" stroke-width="14"/>`;
+
+  segments.forEach(s => {
+    const pct = s.count / total;
+    const strokeDash = pct * c;
+    const strokeOffset = accOffset;
+    accOffset -= strokeDash;
+
+    if (s.count > 0) {
+      segSvg += `
+        <circle cx="70" cy="70" r="${r}" fill="none" stroke="${s.color}" stroke-width="14"
+          stroke-dasharray="${strokeDash.toFixed(2)} ${c.toFixed(2)}"
+          stroke-dashoffset="${strokeOffset.toFixed(2)}"
+          style="transition: stroke-dasharray 0.6s ease;"
+        />
+      `;
+    }
+  });
+
+  svg.innerHTML = segSvg;
+}
+
+// ── 5. TOP 8 Risk Scenarios List ──
+function renderTop8List() {
+  const container = document.getElementById('dashTop8Container');
+  if (!container) return;
+
+  const strategies = getDashStrategies();
+  // Sort by ticket count descending
+  const sorted = [...strategies].sort((a, b) => b.ticketCount - a.ticketCount).slice(0, 8);
+  const maxTickets = Math.max(...sorted.map(s => s.ticketCount), 1);
+
+  container.innerHTML = sorted.map((s, idx) => {
+    const rankClass = idx === 0 ? 'top1' : idx === 1 ? 'top2' : idx === 2 ? 'top3' : '';
+    const sevClass = s.severity.toLowerCase();
+    const pct = ((s.ticketCount / maxTickets) * 100).toFixed(1);
+    
+    return `
+      <div class="dash-top8-item">
+        <div class="dash-top8-main-row">
+          <div class="dash-top8-left">
+            <span class="dash-top8-rank-badge ${rankClass}">#${idx + 1}</span>
+            <span class="dash-top8-tpl-tag">${s.id}</span>
+            <span class="dash-top8-title" title="${s.name}">${s.name}</span>
+            <span class="dash-severity-chip ${sevClass}">${s.severity}</span>
+          </div>
+          <div class="dash-top8-right">
+            <span class="dash-top8-count">${s.ticketCount.toLocaleString()} 笔</span>
+            <button type="button" class="dash-top8-action-btn" onclick="openStrategyDrawer('${s.id}')">详情</button>
+          </div>
+        </div>
+        <div class="dash-top8-track">
+          <div class="dash-top8-fill" style="width:${pct}%; background: linear-gradient(90deg, #10b981, #0ea5e9);"></div>
+        </div>
+      </div>
+    `;
+  }).join('');
+}
+
+// ── 6. 5-Domain SOP & RFI Coverage Gap Matrix ──
+function renderCoverageMatrix() {
+  const container = document.getElementById('dashCoverageMatrixContainer');
+  if (!container) return;
+
+  const strategies = getDashStrategies();
+  const domains = [
+    { id: 'highrisk', name: '高风险地址 (AML 溯源)', icon: '🛡️' },
+    { id: 'source', name: '资金来源安全 (Fund Safety)', icon: '💰' },
+    { id: 'behavior', name: '异常行为监控 (Trade Safety)', icon: '⚡' },
+    { id: 'kyc', name: '身份与实控人 (KYC/AML)', icon: '🆔' },
+    { id: 'account', name: '账户关联分析 (Account Security)', icon: '🔗' }
+  ];
+
+  container.innerHTML = domains.map(d => {
+    const dStrats = strategies.filter(s => s.domain === d.id);
+    const total = dStrats.length || 1;
+    const readyCount = dStrats.filter(s => s.sopStatus === 'ready').length;
+    const pct = ((readyCount / total) * 100).toFixed(0);
+    const missing = dStrats.filter(s => s.sopStatus === 'missing' || s.sopStatus === 'draft');
+
+    const badgeClass = readyCount === total ? 'full' : 'gap';
+    const badgeText = readyCount === total ? 'SOP 完备 100%' : `SOP 覆盖 ${pct}%`;
+
+    const gapTags = missing.length > 0 
+      ? missing.map(m => `<span class="dash-gap-pill" onclick="quickJumpToWorkbenchTemplate('${m.id}')" title="点击立即前往补齐 SOP 规程">待补: ${m.id} ${m.name.slice(0, 6)}</span>`).join('')
+      : '<span style="color:#10b981; font-size:11px;">✓ 规范全量覆盖</span>';
+
+    return `
+      <div class="dash-domain-card">
+        <div class="dash-domain-hdr">
+          <span class="dash-domain-name"><span>${d.icon}</span><span>${d.name}</span></span>
+          <span class="dash-domain-badge ${badgeClass}">${badgeText}</span>
+        </div>
+        <div class="dash-domain-progress">
+          <div class="dash-domain-fill" style="width:${pct}%;"></div>
+        </div>
+        <div class="dash-domain-foot">
+          <span>模板数: ${total} 套</span>
+          <div class="dash-domain-gap-tags">${gapTags}</div>
+        </div>
+      </div>
+    `;
+  }).join('');
+}
+
+// ── 7. Strategy Action Worklist & Drawer ──
+function setDashTableTab(tab) {
+  dashCurTab = tab;
+  dashCurPage = 1;
+  document.querySelectorAll('.dash-tab-btn').forEach(b => b.classList.remove('active'));
+  if (tab === 'all') document.getElementById('tabBtnAll').classList.add('active');
+  if (tab === 'growth') document.getElementById('tabBtnGrowth').classList.add('active');
+  if (tab === 'lackSop') document.getElementById('tabBtnLackSop').classList.add('active');
+  if (tab === 'overdue') document.getElementById('tabBtnOverdue').classList.add('active');
+  renderStrategyTable();
+}
+
+function renderStrategyTable() {
+  const tbody = document.getElementById('dashTableBody');
+  if (!tbody) return;
+
+  const strategies = getDashStrategies();
+
+  // Update tab counters
+  const growthCount = strategies.filter(s => parseFloat(s.growthRate) >= 10.0).length;
+  const lackSopCount = strategies.filter(s => s.sopStatus === 'missing' || s.sopStatus === 'draft').length;
+  const overdueCount = strategies.filter(s => s.countOverdue > 0).length;
+
+  document.getElementById('tabCountAll').textContent = strategies.length;
+  document.getElementById('tabCountGrowth').textContent = growthCount;
+  document.getElementById('tabCountLackSop').textContent = lackSopCount;
+  document.getElementById('tabCountOverdue').textContent = overdueCount;
+
+  const filtered = getFilteredStrategies();
+
+  // Pagination
+  const totalPages = Math.ceil(filtered.length / DASH_PAGE_SIZE) || 1;
+  if (dashCurPage > totalPages) dashCurPage = totalPages;
+  const startIdx = (dashCurPage - 1) * DASH_PAGE_SIZE;
+  const pageItems = filtered.slice(startIdx, startIdx + DASH_PAGE_SIZE);
+
+  document.getElementById('dashTableCountText').textContent = `共 ${filtered.length} 条策略模板，显示第 ${startIdx + 1}-${Math.min(startIdx + DASH_PAGE_SIZE, filtered.length)} 条`;
+  renderPagination(totalPages);
+
+  if (pageItems.length === 0) {
+    tbody.innerHTML = `<tr><td colspan="9" style="text-align:center; padding:36px; color:var(--t3);">暂无匹配的策略模板记录</td></tr>`;
+    return;
+  }
+
+  tbody.innerHTML = pageItems.map(s => {
+    const isSelected = dashSelectedIds.has(s.id);
+    const sevClass = s.severity.toLowerCase();
+    const sopClass = s.sopStatus === 'ready' ? 'ready' : s.sopStatus === 'draft' ? 'draft' : 'missing';
+    const sopText = s.sopStatus === 'ready' ? '已齐备' : s.sopStatus === 'draft' ? '草稿中' : '缺少 SOP';
+
+    // SVG Sparkline
+    const sparkW = 80;
+    const sparkH = 22;
+    const maxVal = Math.max(...s.sparkline, 1);
+    const pts = s.sparkline.map((v, i) => {
+      const x = (i / (s.sparkline.length - 1)) * sparkW;
+      const y = sparkH - (v / maxVal) * (sparkH - 4) - 2;
+      return `${x.toFixed(1)},${y.toFixed(1)}`;
+    }).join(' ');
+
+    return `
+      <tr class="${isSelected ? 'selected' : ''}">
+        <td style="text-align:center;">
+          <input type="checkbox" ${isSelected ? 'checked' : ''} onchange="toggleDashItemCheck('${s.id}', this.checked)">
+        </td>
+        <td>
+          <div class="dash-tpl-cell">
+            <div class="dash-tpl-icon">${s.id}</div>
+            <div class="dash-tpl-info">
+              <span class="dash-tpl-name">${s.name}</span>
+              <span class="dash-tpl-rule-desc" title="${s.ruleDesc}">${s.ruleDesc}</span>
+            </div>
+          </div>
+        </td>
+        <td class="col-domain">
+          <span style="font-size:11.5px; color:var(--t2);">${getDomainLabel(s.domain).slice(0, 6)}</span>
+        </td>
+        <td class="col-severity">
+          <span class="dash-severity-chip ${sevClass}">${s.severity}</span>
+        </td>
+        <td class="col-trend">
+          <svg width="${sparkW}" height="${sparkH}" style="overflow:visible;">
+            <polyline points="${pts}" fill="none" stroke="${s.severity === 'CRIT' ? '#ef4444' : '#10b981'}" stroke-width="1.8" stroke-linecap="round"/>
+          </svg>
+        </td>
+        <td class="col-tickets" style="text-align:right;">
+          <b style="font-family:var(--mono);">${s.ticketCount.toLocaleString()}</b>
+        </td>
+        <td class="col-sop">
+          <span class="dash-sop-status-pill ${sopClass}" onclick="cycleSopStatus('${s.id}')" title="点击快速切换 SOP 规程完备状态">${sopText}</span>
+        </td>
+        <td class="col-owner">
+          <span class="dash-owner-badge">
+            <span class="dash-owner-avatar">${s.owner.slice(0, 1)}</span>
+            <span>${s.owner}</span>
+          </span>
+        </td>
+        <td style="text-align:right;">
+          <div class="dash-row-actions" style="justify-content:flex-end;">
+            <button type="button" class="dash-action-link primary" onclick="openStrategyDrawer('${s.id}')">详情</button>
+            <button type="button" class="dash-action-link" onclick="quickInitiateCase('${s.id}')">发起协查</button>
+          </div>
+        </td>
+      </tr>
+    `;
+  }).join('');
+}
+
+function renderPagination(totalPages) {
+  const container = document.getElementById('dashPaginationBtns');
+  if (!container) return;
+
+  let html = `
+    <button type="button" class="dash-page-btn" onclick="gotoDashPage(${dashCurPage - 1})" ${dashCurPage <= 1 ? 'disabled' : ''}>&lt;</button>
+  `;
+
+  for (let p = 1; p <= totalPages; p++) {
+    html += `
+      <button type="button" class="dash-page-btn ${p === dashCurPage ? 'active' : ''}" onclick="gotoDashPage(${p})">${p}</button>
+    `;
+  }
+
+  html += `
+    <button type="button" class="dash-page-btn" onclick="gotoDashPage(${dashCurPage + 1})" ${dashCurPage >= totalPages ? 'disabled' : ''}>&gt;</button>
+  `;
+
+  container.innerHTML = html;
+}
+
+function gotoDashPage(page) {
+  dashCurPage = page;
+  renderStrategyTable();
+}
+
+function toggleDashItemCheck(id, checked) {
+  if (checked) dashSelectedIds.add(id);
+  else dashSelectedIds.delete(id);
+
+  const batchBtn = document.getElementById('dashBatchAssignBtn');
+  const batchText = document.getElementById('dashBatchAssignText');
+  if (batchBtn) {
+    batchBtn.style.display = dashSelectedIds.size > 0 ? 'inline-flex' : 'none';
+    if (batchText) batchText.textContent = `批量指派 (${dashSelectedIds.size})`;
+  }
+}
+
+function toggleDashSelectAll(checked) {
+  const filtered = getFilteredStrategies();
+  if (checked) {
+    filtered.forEach(s => dashSelectedIds.add(s.id));
+  } else {
+    dashSelectedIds.clear();
+  }
+  renderStrategyTable();
+
+  const batchBtn = document.getElementById('dashBatchAssignBtn');
+  const batchText = document.getElementById('dashBatchAssignText');
+  if (batchBtn) {
+    batchBtn.style.display = dashSelectedIds.size > 0 ? 'inline-flex' : 'none';
+    if (batchText) batchText.textContent = `批量指派 (${dashSelectedIds.size})`;
+  }
+}
+
+function cycleSopStatus(id) {
+  const strategies = getDashStrategies();
+  const s = strategies.find(item => item.id === id);
+  if (!s) return;
+
+  const nextStatus = s.sopStatus === 'ready' ? 'draft' : s.sopStatus === 'draft' ? 'missing' : 'ready';
+  saveDashStrategyMeta(id, { sopStatus: nextStatus });
+  if (typeof notif === 'function') notif(`已更新 ${id} 的 SOP 状态为: ${nextStatus === 'ready' ? '已齐备' : nextStatus === 'draft' ? '草稿中' : '缺少 SOP'}`, 'info');
+  renderDashboard();
+}
+
+// ── 8. Slide-out Right Drawer ──
+function openStrategyDrawer(id) {
+  const strategies = getDashStrategies();
+  const s = strategies.find(item => item.id === id);
+  if (!s) return;
+
+  dashCurrentDrawerStrategy = s;
+
+  document.getElementById('drawerTplIdTag').textContent = s.id;
+  document.getElementById('drawerTplName').textContent = s.name;
+
+  const body = document.getElementById('drawerBodyContent');
+  if (body) {
+    const sevClass = s.severity.toLowerCase();
+    
+    // Top 5 recent tickets for this strategy
+    const recentTickets = s.tickets.slice(0, 5);
+    const ticketsHtml = recentTickets.length > 0 ? recentTickets.map(t => `
+      <div style="display:flex; justify-content:space-between; align-items:center; padding:6px 0; border-bottom:1px solid var(--bd); font-size:11.5px;">
+        <div>
+          <b>${t.id}</b> · UID <span style="font-family:var(--mono);">${t.uid}</span>
+          <div style="color:var(--t3); font-size:10.5px;">${t.time}</div>
+        </div>
+        <div style="text-align:right;">
+          <span style="font-weight:600;">${t.amount || '--'}</span>
+          <div><span class="dash-kpi-badge-tag ${t.status === '已完成' ? 'green' : t.status === '已逾期' ? 'red' : 'blue'}" style="font-size:10px;">${t.status}</span></div>
+        </div>
+      </div>
+    `).join('') : '<div style="color:var(--t3); font-size:11.5px; padding:8px 0;">暂无近期工单记录</div>';
+
+    body.innerHTML = `
+      <!-- Section 1: Core Strategy Specs -->
+      <div class="dash-drawer-section">
+        <span class="dash-drawer-sec-title">策略与规则定义</span>
+        <div class="dash-drawer-card">
+          <div style="display:flex; justify-content:space-between; align-items:center;">
+            <span style="color:var(--t3);">风险业务域</span>
+            <b>${getDomainLabel(s.domain)}</b>
+          </div>
+          <div style="display:flex; justify-content:space-between; align-items:center;">
+            <span style="color:var(--t3);">风险危害等级</span>
+            <span class="dash-severity-chip ${sevClass}">${s.severity}</span>
+          </div>
+          <div style="display:flex; justify-content:space-between; align-items:center;">
+            <span style="color:var(--t3);">触发监控阈值</span>
+            <b style="font-family:var(--mono);">${s.threshold}</b>
+          </div>
+          <div style="margin-top:6px; padding-top:6px; border-top:1px solid var(--bd);">
+            <div style="color:var(--t3); margin-bottom:4px;">规则逻辑与特征描述：</div>
+            <div style="background:var(--sf1); padding:8px 10px; border-radius:4px; border:1px solid var(--bd); font-size:12px; line-height:1.5;">${s.ruleDesc}</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Section 2: Operational Responsibility & SOP -->
+      <div class="dash-drawer-section">
+        <span class="dash-drawer-sec-title">运营管理与制度规程</span>
+        <div class="dash-drawer-card">
+          <div style="display:flex; justify-content:space-between; align-items:center;">
+            <span style="color:var(--t3);">SOP 完备度状态</span>
+            <select class="dash-filter-select" style="background:var(--sf1); border:1px solid var(--bd); border-radius:4px; padding:3px 8px;" onchange="updateDrawerSopStatus('${s.id}', this.value)">
+              <option value="ready" ${s.sopStatus === 'ready' ? 'selected' : ''}>已齐备 (Ready)</option>
+              <option value="draft" ${s.sopStatus === 'draft' ? 'selected' : ''}>草稿中 (Draft)</option>
+              <option value="missing" ${s.sopStatus === 'missing' ? 'selected' : ''}>缺少规程 (Missing)</option>
+            </select>
+          </div>
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-top:8px;">
+            <span style="color:var(--t3);">责任人 / 经办组</span>
+            <input type="text" value="${s.owner}" style="background:var(--sf1); border:1px solid var(--bd); border-radius:4px; padding:3px 8px; color:var(--t1); font-size:12px; width:180px;" onchange="updateDrawerOwner('${s.id}', this.value)">
+          </div>
+        </div>
+      </div>
+
+      <!-- Section 3: Recent Ticket Cases -->
+      <div class="dash-drawer-section">
+        <span class="dash-drawer-sec-title">关联调查工单历史 (${s.ticketCount} 笔)</span>
+        <div class="dash-drawer-card">
+          ${ticketsHtml}
+        </div>
+      </div>
+    `;
+  }
+
+  document.getElementById('dashDrawerBackdrop').classList.add('open');
+  document.getElementById('dashStrategyDrawer').classList.add('open');
+}
+
+function closeDashDrawer() {
+  const backdrop = document.getElementById('dashDrawerBackdrop');
+  const drawer = document.getElementById('dashStrategyDrawer');
+  if (backdrop) backdrop.classList.remove('open');
+  if (drawer) drawer.classList.remove('open');
+}
+
+function updateDrawerSopStatus(id, newStatus) {
+  saveDashStrategyMeta(id, { sopStatus: newStatus });
+  if (typeof notif === 'function') notif('SOP 规程状态已更新', 'success');
+  renderDashboard();
+}
+
+function updateDrawerOwner(id, newOwner) {
+  saveDashStrategyMeta(id, { owner: newOwner });
+  if (typeof notif === 'function') notif('责任人已更新', 'success');
+  renderDashboard();
+}
+
+function drawerJumpToWorkbench() {
+  if (!dashCurrentDrawerStrategy) return;
+  const tid = dashCurrentDrawerStrategy.id;
+  closeDashDrawer();
+  quickJumpToWorkbenchTemplate(tid);
+}
+
+function drawerInitiateCase() {
+  if (!dashCurrentDrawerStrategy) return;
+  const tid = dashCurrentDrawerStrategy.id;
+  closeDashDrawer();
+  quickInitiateCase(tid);
+}
+
+// ── 9. Deep Workflow Navigation to Workbench ──
+function quickJumpToWorkbenchTemplate(tid) {
+  switchAppView('workbench');
+  if (typeof openT === 'function') {
+    openT(tid);
+  }
+}
+
+function quickInitiateCase(tid) {
+  switchAppView('workbench');
+  if (typeof openT === 'function') {
+    openT(tid);
+  }
+  setTimeout(() => {
+    const btn = document.getElementById('btnNewCase');
+    if (btn) btn.click();
+  }, 100);
+}
+
+// ── 10. Modals Handlers ──
+function openBatchAssignModal() {
+  const prompt = document.getElementById('dashAssignPrompt');
+  if (prompt) prompt.textContent = `已选择 ${dashSelectedIds.size} 项策略模板进行批量责任人指派：`;
+  const modal = document.getElementById('dashAssignModal');
+  if (modal) modal.classList.add('open');
+}
+
+function confirmBatchAssign() {
+  const newOwner = document.getElementById('dashAssignNewOwner').value.trim();
+  if (!newOwner) {
+    alert('请输入经办人姓名或选择合规调查组。');
+    return;
+  }
+  dashSelectedIds.forEach(id => {
+    saveDashStrategyMeta(id, { owner: newOwner });
+  });
+  closeDashModals();
+  dashSelectedIds.clear();
+  if (typeof notif === 'function') notif(`已成功为策略批量指派责任人: ${newOwner}`, 'success');
+  renderDashboard();
+}
+
+function openGapModal() {
+  const tbody = document.getElementById('dashFullGapBody');
+  if (tbody) {
+    const strategies = getDashStrategies();
+    const domains = [
+      { id: 'highrisk', name: '高风险地址 (AML 溯源)' },
+      { id: 'source', name: '资金来源安全 (Fund Safety)' },
+      { id: 'behavior', name: '异常行为监控 (Trade Safety)' },
+      { id: 'kyc', name: '身份与实控人 (KYC/AML)' },
+      { id: 'account', name: '账户关联分析 (Account Security)' }
+    ];
+
+    tbody.innerHTML = domains.map(d => {
+      const dStrats = strategies.filter(s => s.domain === d.id);
+      const total = dStrats.length || 1;
+      const ready = dStrats.filter(s => s.sopStatus === 'ready').length;
+      const pct = ((ready / total) * 100).toFixed(1);
+      const missing = dStrats.filter(s => s.sopStatus === 'missing' || s.sopStatus === 'draft');
+      const missingStr = missing.map(m => m.id).join(', ') || '全量完备';
+
+      return `
+        <tr>
+          <td><b>${d.name}</b></td>
+          <td>${total}</td>
+          <td>${ready}</td>
+          <td>${pct}%</td>
+          <td>${ready}</td>
+          <td>${pct}%</td>
+          <td style="color:${missing.length > 0 ? '#ef4444' : '#10b981'};">${missingStr}</td>
+        </tr>
+      `;
+    }).join('');
+  }
+
+  const modal = document.getElementById('dashGapModal');
+  if (modal) modal.classList.add('open');
+}
+
+function openColSettingsModal() {
+  const modal = document.getElementById('dashColModal');
+  if (modal) modal.classList.add('open');
+}
+
+function toggleColumnVisibility(colName, isVisible) {
+  const cols = document.querySelectorAll('.col-' + colName);
+  cols.forEach(el => {
+    el.style.display = isVisible ? '' : 'none';
+  });
+}
+
+function closeDashModals() {
+  document.querySelectorAll('.dash-modal-overlay').forEach(m => m.classList.remove('open'));
+}
+
+// ── 11. Comprehensive Executive Report Export ──
+function exportDashboardReport() {
+  const tickets = getFilteredTickets();
+  const strategies = getDashStrategies();
+  
+  const report = `# 风控运营 SOP & RFI 全景态势分析报告
+生成时间：${new Date().toLocaleString()}
+系统环境：中心化交易所 (CEX) 链上反洗钱与风险控制运营系统
+
+## 1. 核心指标概览 (Executive KPI Cockpit)
+- 风险拦截总数：${document.getElementById('kpiHits') ? document.getElementById('kpiHits').textContent : '--'} 笔
+- 协查流转工单：${tickets.length} 笔 (转化率 ${document.getElementById('kpiConvRate') ? document.getElementById('kpiConvRate').textContent : '--'})
+- SLA 达成率：${document.getElementById('kpiSlaRate') ? document.getElementById('kpiSlaRate').textContent : '--'}
+- SOP 规程覆盖率：${document.getElementById('kpiSopPct') ? document.getElementById('kpiSopPct').textContent : '--'}
+
+## 2. 策略与规程完备性清单
+${strategies.map(s => `- [${s.id}] ${s.name} (${getDomainLabel(s.domain)}) | 危害: ${s.severity} | 工单: ${s.ticketCount} | SOP: ${s.sopStatus} | 负责人: ${s.owner}`).join('\n')}
+
+---
+本报告由风控运营看板数据引擎自动生成。
+`;
+
+  const blob = new Blob([report], { type: 'text/markdown;charset=utf-8;' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = `Risk_Ops_Report_${Date.now()}.md`;
+  a.click();
+  URL.revokeObjectURL(url);
+  if (typeof notif === 'function') notif('全景分析报告已生成并开始下载', 'success');
+}
+
+// ── 12. Application Initialization ──
+function initAppView() {
+  cleanupLegacyMockData();
+  seedInitialHistIfEmpty();
+
+  if (location.hash === '#workbench') {
+    switchAppView('workbench');
+  } else {
+    switchAppView('dashboard');
+  }
+
+  // Bind popstate to handle back/forward hash changes
+  window.addEventListener('hashchange', () => {
+    if (location.hash === '#workbench' && curAppView !== 'workbench') {
+      switchAppView('workbench');
+    } else if (location.hash === '#dashboard' && curAppView !== 'dashboard') {
+      switchAppView('dashboard');
+    }
+  });
+}
+
+// Hook into workbench history changes to auto-refresh dashboard
+if (typeof window !== 'undefined') {
+  const origSaveHist = window.saveHist;
+  if (typeof origSaveHist === 'function') {
+    window.saveHist = function() {
+      const res = origSaveHist.apply(this, arguments);
+      if (typeof renderDashboard === 'function') renderDashboard();
+      return res;
+    };
+  }
+
+  // Boot
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initAppView);
+  } else {
+    initAppView();
+  }
+}
+
+</script>
 </body>
 </html>
