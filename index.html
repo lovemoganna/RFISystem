@@ -6284,7 +6284,7 @@ code, kbd, samp, pre,
   background: var(--sf2);
   padding: 2px 4px;
   border-radius: var(--radius);
-  border: 1px solid var(--bd);
+  border: 1px solid transparent;
 }
 
 /* 7 Core Metric Cards (MECE Pro Max) */
@@ -6384,7 +6384,8 @@ code, kbd, samp, pre,
   align-items: center;
   gap: 10px;
   background: var(--sf);
-  border: 1px solid var(--bd);
+  border: 1px solid transparent;
+  box-shadow: var(--shadow-sm);
   border-radius: var(--radius);
   padding: 6px 12px;
   margin-bottom: 10px;
@@ -6412,7 +6413,7 @@ code, kbd, samp, pre,
   gap: 6px;
   padding: 3px 9px;
   border-radius: 999px;
-  border: 1px solid var(--bd);
+  border: 1px solid transparent;
   background: var(--sf2);
   font-size: 11px;
   color: var(--t1);
@@ -6421,13 +6422,12 @@ code, kbd, samp, pre,
   user-select: none;
 }
 .ops-team-chip:hover {
-  border-color: var(--bd2);
-  background: var(--sf2);
+  background: var(--sf3);
 }
 .ops-team-chip.active {
-  border-color: var(--t2);
   background: var(--sf3);
   color: var(--t1);
+  box-shadow: 0 0 0 1px var(--t2);
 }
 .ops-team-chip.active .ops-team-chip-badge {
   background: var(--sf);
@@ -6497,17 +6497,16 @@ code, kbd, samp, pre,
   gap: 4px;
   font-size: 11px;
   font-weight: 600;
-  padding: 3px 9px;
-  border-radius: 4px;
-  border: 1px solid var(--bd);
-  background: var(--sf);
+  padding: 4px 10px;
+  border-radius: 6px;
+  border: 1px solid transparent;
+  background: var(--sf2);
   color: var(--t2);
   cursor: pointer;
   transition: all 0.15s ease;
 }
 .ops-team-rebalance-btn:hover {
-  border-color: var(--bd2);
-  background: var(--sf2);
+  background: var(--sf3);
   color: var(--t1);
 }
 
@@ -6526,14 +6525,14 @@ code, kbd, samp, pre,
   gap: 4px;
   margin-right: 4px;
   padding-right: 6px;
-  border-right: 1px solid var(--bd);
+  border-right: 1px solid transparent;
 }
 .ops-user-sel {
   font-size: 11px;
   font-weight: 600;
   color: var(--t1);
   background: var(--sf2);
-  border: 1px solid var(--bd);
+  border: 1px solid transparent;
   border-radius: var(--radius-sm);
   padding: 2px 6px;
   cursor: pointer;
@@ -6543,10 +6542,10 @@ code, kbd, samp, pre,
   display: inline-flex;
   align-items: center;
   gap: 4px;
-  background: var(--sf);
-  border: 1px solid var(--bd);
+  background: var(--sf2);
+  border: 1px solid transparent;
   border-radius: 14px;
-  padding: 3px 9px;
+  padding: 3px 10px;
   font-size: 11px;
   font-weight: 500;
   color: var(--t2);
@@ -6556,16 +6555,14 @@ code, kbd, samp, pre,
   user-select: none;
 }
 .ops-preset-chip:hover {
-  border-color: var(--bd2);
   color: var(--t1);
-  background: var(--sf2);
+  background: var(--sf3);
 }
 .ops-preset-chip.active {
   background: var(--sf3);
-  border-color: var(--t2);
   color: var(--t1);
   font-weight: 600;
-  box-shadow: none;
+  box-shadow: 0 0 0 1px var(--t2);
 }
 .ops-preset-chip .preset-count {
   background: var(--sf2);
@@ -6599,8 +6596,8 @@ code, kbd, samp, pre,
   display: flex;
   align-items: center;
   gap: 5px;
-  background: var(--sf);
-  border: 1px solid var(--bd);
+  background: var(--sf2);
+  border: 1px solid transparent;
   border-radius: var(--radius);
   padding: 3px 7px;
   width: 170px;
@@ -6609,7 +6606,7 @@ code, kbd, samp, pre,
   transition: var(--transition);
 }
 .ops-vsearch:focus-within {
-  border-color: var(--bd2);
+  border-color: var(--ac);
   width: 200px;
   box-shadow: none;
 }
@@ -6629,7 +6626,7 @@ code, kbd, samp, pre,
 }
 .ops-search-count-badge {
   font-size: 9.5px;
-  background: var(--sf2);
+  background: var(--sf3);
   color: var(--t2);
   padding: 0 4px;
   border-radius: 3px;
@@ -6641,8 +6638,8 @@ code, kbd, samp, pre,
   padding: 3px 6px;
   font-size: 11px;
   height: 24px;
-  background: var(--sf);
-  border: 1px solid var(--bd);
+  background: var(--sf2);
+  border: 1px solid transparent;
   border-radius: var(--radius);
   color: var(--t1);
   cursor: pointer;
@@ -6652,12 +6649,11 @@ code, kbd, samp, pre,
   transition: var(--transition);
 }
 .ops-vsel:focus {
-  border-color: var(--bd2);
+  border-color: var(--ac);
   outline: none;
 }
 .ops-vsel.has-value {
-  border-color: var(--bd2);
-  background: var(--sf2);
+  background: var(--sf3);
   color: var(--t1);
   font-weight: 600;
 }
@@ -6670,21 +6666,19 @@ code, kbd, samp, pre,
   height: 24px;
   padding: 0 8px;
   border-radius: var(--radius);
-  background: var(--sf);
-  border: 1px solid var(--bd);
+  background: var(--sf2);
+  border: 1px solid transparent;
   color: var(--t2);
   cursor: pointer;
   white-space: nowrap;
   transition: var(--transition);
 }
 .ops-adv-toggle-btn:hover {
-  background: var(--sf2);
+  background: var(--sf3);
   color: var(--t1);
-  border-color: var(--bd2);
 }
 .ops-adv-toggle-btn.active {
-  background: var(--sf2);
-  border-color: var(--bd2);
+  background: var(--sf3);
   color: var(--t1);
   font-weight: 600;
 }
@@ -18699,7 +18693,7 @@ function renderTeamLoadChips(items) {
     else if (pct >= 85) barColor = 'var(--am)';
     else if (pct >= 50) barColor = 'var(--ac)';
 
-    var badgeStyle = overdueCount > 0 ? 'background:var(--re); color:#fff;' : (isSelected ? 'background:#fff; color:var(--ac);' : '');
+    var badgeStyle = overdueCount > 0 ? 'background:var(--re); color:#fff;' : (isSelected ? 'background:var(--sf); color:var(--ac);' : '');
 
     html += `
       <div class="ops-team-chip ${isSelected ? 'active' : ''}" onclick="opsFilterByTeamMember('${escapeHtml(name)}')" title="${escapeHtml(name)}：在办 ${activeCases.length} 宗，负荷率 ${pct}%${overdueCount > 0 ? '，' + overdueCount + ' 宗已逾期' : ''}">
