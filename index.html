@@ -9005,7 +9005,6 @@ code, kbd, samp, pre,
       <button class="hbtn hbtn-ops-cockpit" id="opsNavBtn" onclick="toggleOpsView()" title="切换 案件运营看板 / 模板工作台 (快捷键: O 或 0)">
         <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
         <span id="opsNavBtnText">运营看板</span>
-        <span class="ops-nav-badge" id="opsNavBadge" style="display:none">0</span>
       </button>
       <button class="hbtn" onclick="openHist()" title="查看 RFI 发送与跟进记录">
         <svg viewBox="0 0 24 24" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0z"/></svg><span>使用记录</span>
@@ -18475,20 +18474,10 @@ function renderOpsMainView() {
     }
   });
 
-  // Top Nav Header Alarm Badge
+  // Top Nav Header Alarm Badge (Removed per user request)
   var navBadge = document.getElementById('opsNavBadge');
   if (navBadge) {
-    if (cntOverdue > 0) {
-      navBadge.textContent = cntOverdue + ' 逾期';
-      navBadge.className = 'ops-nav-badge urgent';
-      navBadge.style.display = 'inline-flex';
-    } else if (cntActive > 0) {
-      navBadge.textContent = cntActive + ' 在办';
-      navBadge.className = 'ops-nav-badge';
-      navBadge.style.display = 'inline-flex';
-    } else {
-      navBadge.style.display = 'none';
-    }
+    navBadge.style.display = 'none';
   }
 
   // Dynamic Personnel Rail
