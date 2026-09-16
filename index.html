@@ -6284,7 +6284,7 @@ code, kbd, samp, pre,
   background: var(--sf2);
   padding: 2px 4px;
   border-radius: var(--radius);
-  border: 1px solid transparent;
+  border: none !important;
 }
 
 /* 7 Core Metric Cards (MECE Pro Max) */
@@ -6306,7 +6306,8 @@ code, kbd, samp, pre,
 
 .ops-vstat-card {
   background: var(--sf);
-  border: 1px solid var(--bd);
+  border: none !important;
+  box-shadow: var(--shadow-sm);
   border-radius: var(--radius);
   padding: 10px 12px;
   cursor: pointer;
@@ -6318,12 +6319,12 @@ code, kbd, samp, pre,
   user-select: none;
 }
 .ops-vstat-card:hover {
-  border-color: var(--bd2);
   transform: translateY(-1px);
+  box-shadow: var(--shadow-md);
 }
 .ops-vstat-card.active {
-  border-color: var(--t2) !important;
   background: var(--sf2);
+  box-shadow: inset 0 0 0 2px var(--ac) !important;
 }
 .ops-vstat-card.active::after {
   content: "✓";
@@ -6332,7 +6333,7 @@ code, kbd, samp, pre,
   right: 6px;
   font-size: 10px;
   font-weight: 700;
-  color: var(--t2);
+  color: var(--ac);
 }
 
 .ops-vstat-label {
@@ -6384,7 +6385,7 @@ code, kbd, samp, pre,
   align-items: center;
   gap: 10px;
   background: var(--sf);
-  border: 1px solid transparent;
+  border: none !important;
   box-shadow: var(--shadow-sm);
   border-radius: var(--radius);
   padding: 6px 12px;
@@ -6413,7 +6414,9 @@ code, kbd, samp, pre,
   gap: 6px;
   padding: 3px 9px;
   border-radius: 999px;
-  border: 1px solid transparent;
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
   background: var(--sf2);
   font-size: 11px;
   color: var(--t1);
@@ -6425,19 +6428,21 @@ code, kbd, samp, pre,
   background: var(--sf3);
 }
 .ops-team-chip.active {
-  background: var(--sf3);
-  color: var(--t1);
-  box-shadow: 0 0 0 1px var(--t2);
+  background: var(--ac) !important;
+  color: #ffffff !important;
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
 }
 .ops-team-chip.active .ops-team-chip-badge {
-  background: var(--sf);
-  color: var(--t1);
+  background: rgba(0, 0, 0, 0.22) !important;
+  color: #ffffff !important;
 }
 .ops-team-chip.active .ops-team-chip-name {
-  color: var(--t1);
+  color: #ffffff !important;
 }
 .ops-team-chip.active .ops-team-capacity-bar-wrap {
-  background: rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.3) !important;
 }
 .ops-team-chip-avatar {
   width: 17px;
@@ -6451,6 +6456,10 @@ code, kbd, samp, pre,
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
+}
+.ops-team-chip.active .ops-team-chip-avatar {
+  background: rgba(255, 255, 255, 0.25) !important;
+  color: #ffffff !important;
 }
 .ops-team-chip-meta {
   display: flex;
@@ -6494,12 +6503,14 @@ code, kbd, samp, pre,
 .ops-team-rebalance-btn {
   display: inline-flex;
   align-items: center;
-  gap: 4px;
+  gap: 5px;
   font-size: 11px;
   font-weight: 600;
   padding: 4px 10px;
   border-radius: 6px;
-  border: 1px solid transparent;
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
   background: var(--sf2);
   color: var(--t2);
   cursor: pointer;
@@ -6508,6 +6519,8 @@ code, kbd, samp, pre,
 .ops-team-rebalance-btn:hover {
   background: var(--sf3);
   color: var(--t1);
+  border: none !important;
+  outline: none !important;
 }
 
 /* Control Toolbar & Filters (MECE Compact & Responsive) */
@@ -6523,27 +6536,30 @@ code, kbd, samp, pre,
   display: inline-flex;
   align-items: center;
   gap: 4px;
-  margin-right: 4px;
-  padding-right: 6px;
-  border-right: 1px solid transparent;
+  margin-right: 6px;
+  padding-right: 4px;
+  border-right: none !important;
 }
 .ops-user-sel {
   font-size: 11px;
   font-weight: 600;
   color: var(--t1);
   background: var(--sf2);
-  border: 1px solid transparent;
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
   border-radius: var(--radius-sm);
-  padding: 2px 6px;
+  padding: 3px 6px;
   cursor: pointer;
-  outline: none;
 }
 .ops-preset-chip {
   display: inline-flex;
   align-items: center;
   gap: 4px;
   background: var(--sf2);
-  border: 1px solid transparent;
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
   border-radius: 14px;
   padding: 3px 10px;
   font-size: 11px;
@@ -6559,13 +6575,15 @@ code, kbd, samp, pre,
   background: var(--sf3);
 }
 .ops-preset-chip.active {
-  background: var(--sf3);
-  color: var(--t1);
-  font-weight: 600;
-  box-shadow: 0 0 0 1px var(--t2);
+  background: var(--ac) !important;
+  color: #ffffff !important;
+  font-weight: 700;
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
 }
 .ops-preset-chip .preset-count {
-  background: var(--sf2);
+  background: var(--sf3);
   color: var(--t3);
   padding: 0 5px;
   border-radius: 8px;
@@ -6573,8 +6591,8 @@ code, kbd, samp, pre,
   font-family: var(--font-mono);
 }
 .ops-preset-chip.active .preset-count {
-  background: var(--sf);
-  color: var(--t1);
+  background: rgba(0, 0, 0, 0.22) !important;
+  color: #ffffff !important;
 }
 
 .ops-vtoolbar {
@@ -6687,7 +6705,8 @@ code, kbd, samp, pre,
 .ops-adv-filter-panel {
   display: none;
   background: var(--sf);
-  border: 1px solid var(--bd);
+  border: none !important;
+  box-shadow: var(--shadow-sm);
   border-radius: var(--radius);
   padding: 10px 12px;
   margin-bottom: 8px;
@@ -6722,20 +6741,20 @@ code, kbd, samp, pre,
   font-size: 10.5px;
   padding: 2px 7px;
   background: var(--sf2);
-  border: 1px solid var(--bd);
+  border: none !important;
   border-radius: 4px;
   color: var(--t2);
   cursor: pointer;
   transition: var(--transition);
 }
 .ops-adv-chip-btn:hover {
-  border-color: var(--ac);
-  color: var(--ac);
+  background: var(--sf3);
+  color: var(--t1);
 }
 .ops-adv-chip-btn.active {
-  background: var(--ac);
-  border-color: var(--ac);
-  color: #fff;
+  background: var(--ac) !important;
+  border: none !important;
+  color: #fff !important;
   font-weight: 600;
 }
 .ops-adv-custom-row {
@@ -6746,7 +6765,7 @@ code, kbd, samp, pre,
 }
 .ops-adv-custom-input {
   background: var(--sf2);
-  border: 1px solid var(--bd);
+  border: none !important;
   border-radius: 4px;
   padding: 2px 5px;
   font-size: 10.5px;
@@ -6755,7 +6774,7 @@ code, kbd, samp, pre,
   font-family: var(--font-mono);
 }
 .ops-adv-custom-input:focus {
-  border-color: var(--ac);
+  box-shadow: 0 0 0 1.5px var(--ac) !important;
   outline: none;
 }
 
@@ -6820,7 +6839,7 @@ code, kbd, samp, pre,
 .ops-vview-switch {
   display: flex;
   background: var(--sf2);
-  border: 1px solid var(--bd);
+  border: none !important;
   border-radius: var(--radius);
   padding: 2px;
   gap: 2px;
@@ -6830,7 +6849,8 @@ code, kbd, samp, pre,
   display: inline-flex;
   align-items: center;
   gap: 4px;
-  border: none;
+  border: none !important;
+  outline: none !important;
   background: transparent;
   padding: 3px 8px;
   border-radius: 4px;
@@ -6846,9 +6866,51 @@ code, kbd, samp, pre,
   height: 12px;
 }
 .ops-vview-btn.active {
-  background: var(--sf);
-  color: var(--ac);
-  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  background: var(--sf3) !important;
+  color: var(--ac) !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+/* Explicit Guard: Ensure No White Borders in Light & Dark Mode for Team Rail & Surrounding Controls */
+.ops-team-rail,
+.ops-team-rebalance-btn,
+.ops-team-chip,
+.ops-preset-chip,
+.ops-user-sel,
+.ops-vsearch,
+.ops-vsel,
+.ops-adv-toggle-btn,
+.ops-vview-switch,
+.ops-vview-btn,
+.ops-vhead-grp {
+  border: none !important;
+  outline: none !important;
+}
+
+.dark-theme .ops-team-rail,
+.dark-theme .ops-team-rebalance-btn,
+.dark-theme .ops-team-chip,
+.dark-theme .ops-preset-chip,
+.dark-theme .ops-user-sel,
+.dark-theme .ops-vsearch,
+.dark-theme .ops-vsel,
+.dark-theme .ops-adv-toggle-btn,
+.dark-theme .ops-vview-switch,
+.dark-theme .ops-vview-btn,
+.dark-theme .ops-vhead-grp {
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+.dark-theme .ops-team-chip.active,
+.dark-theme .ops-preset-chip.active {
+  background: var(--ac) !important;
+  color: #ffffff !important;
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
 }
 
 /* Kanban Board & Drag-Drop (5 Stages MECE Pro Max) */
@@ -18673,7 +18735,7 @@ function renderTeamLoadChips(items) {
   var allActive = OPS_VIEW_FILTER.assignee === 'all';
   var html = `
     <div class="ops-team-chip ${allActive ? 'active' : ''}" onclick="opsFilterByTeamMember('all')" title="显示全部经办专员卷宗">
-      <span class="ops-team-chip-avatar" style="background:var(--sf2); color:var(--t1);">👥</span>
+      <span class="ops-team-chip-avatar">👥</span>
       <div class="ops-team-chip-meta">
         <div class="ops-team-chip-name">全部专员</div>
         <div style="font-size:10px; color:var(--t3);">全量在审视图</div>
@@ -18693,7 +18755,7 @@ function renderTeamLoadChips(items) {
     else if (pct >= 85) barColor = 'var(--am)';
     else if (pct >= 50) barColor = 'var(--ac)';
 
-    var badgeStyle = overdueCount > 0 ? 'background:var(--re); color:#fff;' : (isSelected ? 'background:var(--sf); color:var(--ac);' : '');
+    var badgeStyle = overdueCount > 0 ? 'background:var(--re); color:#fff;' : '';
 
     html += `
       <div class="ops-team-chip ${isSelected ? 'active' : ''}" onclick="opsFilterByTeamMember('${escapeHtml(name)}')" title="${escapeHtml(name)}：在办 ${activeCases.length} 宗，负荷率 ${pct}%${overdueCount > 0 ? '，' + overdueCount + ' 宗已逾期' : ''}">
