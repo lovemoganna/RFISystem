@@ -18761,10 +18761,7 @@ function renderTeamLoadChips(items) {
   var html = `
     <div class="ops-team-chip ${allActive ? 'active' : ''}" onclick="opsFilterByTeamMember('all')" title="显示全部经办专员卷宗">
       <span class="ops-team-chip-avatar">👥</span>
-      <div class="ops-team-chip-meta">
-        <div class="ops-team-chip-name">全部专员</div>
-        <div style="font-size:10px; color:var(--t3);">全量在审视图</div>
-      </div>
+      <div class="ops-team-chip-name">全部专员</div>
       <span class="ops-team-chip-badge">${items.filter(function(c) { return c.status !== 'closed'; }).length}</span>
     </div>
   `;
