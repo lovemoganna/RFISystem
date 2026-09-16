@@ -6387,24 +6387,26 @@ code, kbd, samp, pre,
   background: var(--sf);
   border: none !important;
   box-shadow: var(--shadow-sm);
-  border-radius: var(--radius);
-  padding: 6px 12px;
-  margin-bottom: 10px;
+  border-radius: 12px;
+  padding: 8px 14px;
+  margin-bottom: 12px;
   flex-wrap: wrap;
 }
 .ops-team-rail-label {
-  display: flex;
+  display: inline-flex;
   align-items: center;
   gap: 6px;
   font-size: 11px;
   font-weight: 700;
   color: var(--t2);
   white-space: nowrap;
+  padding-right: 8px;
+  border-right: 1px solid var(--bd2);
 }
 .ops-team-chips {
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: 8px;
   flex: 1;
   flex-wrap: wrap;
 }
@@ -6412,7 +6414,8 @@ code, kbd, samp, pre,
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  padding: 3px 9px;
+  height: 28px;
+  padding: 0 10px;
   border-radius: 999px;
   border: none !important;
   outline: none !important;
@@ -6421,28 +6424,34 @@ code, kbd, samp, pre,
   font-size: 11px;
   color: var(--t1);
   cursor: pointer;
-  transition: all 0.15s ease;
+  transition: all 0.18s cubic-bezier(0.4, 0, 0.2, 1);
   user-select: none;
+  white-space: nowrap;
 }
 .ops-team-chip:hover {
   background: var(--sf3);
+  transform: translateY(-1px);
+}
+.ops-team-chip:active {
+  transform: translateY(0);
 }
 .ops-team-chip.active {
-  background: var(--ac) !important;
-  color: #ffffff !important;
+  background: var(--sf3) !important;
+  color: var(--ac) !important;
+  font-weight: 700;
   border: none !important;
   outline: none !important;
-  box-shadow: none !important;
+  box-shadow: inset 0 0 0 1.5px var(--ac) !important;
 }
 .ops-team-chip.active .ops-team-chip-badge {
-  background: rgba(0, 0, 0, 0.22) !important;
+  background: var(--ac) !important;
   color: #ffffff !important;
 }
 .ops-team-chip.active .ops-team-chip-name {
-  color: #ffffff !important;
+  color: var(--ac) !important;
 }
 .ops-team-chip.active .ops-team-capacity-bar-wrap {
-  background: rgba(255, 255, 255, 0.3) !important;
+  background: rgba(0, 0, 0, 0.15) !important;
 }
 .ops-team-chip-avatar {
   width: 17px;
@@ -6456,9 +6465,10 @@ code, kbd, samp, pre,
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
+  transition: all 0.15s ease;
 }
 .ops-team-chip.active .ops-team-chip-avatar {
-  background: rgba(255, 255, 255, 0.25) !important;
+  background: var(--ac) !important;
   color: #ffffff !important;
 }
 .ops-team-chip-meta {
@@ -6473,7 +6483,7 @@ code, kbd, samp, pre,
   color: var(--t1);
 }
 .ops-team-capacity-bar-wrap {
-  width: 42px;
+  width: 38px;
   height: 3px;
   background: var(--bd2);
   border-radius: 2px;
@@ -6487,18 +6497,21 @@ code, kbd, samp, pre,
 .ops-team-chip-badge {
   font-size: 9.5px;
   font-weight: 700;
-  padding: 1px 5px;
+  padding: 1px 6px;
   border-radius: 999px;
   background: var(--sf3);
   color: var(--t2);
   font-family: var(--font-mono);
   white-space: nowrap;
+  transition: all 0.15s ease;
 }
 .ops-team-actions-right {
-  display: flex;
+  display: inline-flex;
   align-items: center;
-  gap: 6px;
+  gap: 8px;
   margin-left: auto;
+  padding-left: 8px;
+  border-left: 1px solid var(--bd2);
 }
 .ops-team-rebalance-btn {
   display: inline-flex;
@@ -6506,92 +6519,103 @@ code, kbd, samp, pre,
   gap: 5px;
   font-size: 11px;
   font-weight: 600;
-  padding: 4px 10px;
-  border-radius: 6px;
+  height: 28px;
+  padding: 0 12px;
+  border-radius: 999px;
   border: none !important;
   outline: none !important;
   box-shadow: none !important;
   background: var(--sf2);
-  color: var(--t2);
+  color: var(--t1);
   cursor: pointer;
-  transition: all 0.15s ease;
+  transition: all 0.18s cubic-bezier(0.4, 0, 0.2, 1);
+  white-space: nowrap;
 }
 .ops-team-rebalance-btn:hover {
   background: var(--sf3);
-  color: var(--t1);
-  border: none !important;
-  outline: none !important;
+  color: var(--ac);
+  transform: translateY(-1px);
+}
+.ops-team-rebalance-btn:active {
+  transform: translateY(0);
 }
 
 /* Control Toolbar & Filters (MECE Compact & Responsive) */
 .ops-presets-rail {
   display: flex;
   align-items: center;
-  gap: 5px;
-  margin-bottom: 8px;
+  gap: 6px;
+  margin-bottom: 10px;
   overflow-x: auto;
   padding-bottom: 2px;
 }
 .ops-user-switch-wrap {
   display: inline-flex;
   align-items: center;
-  gap: 4px;
+  gap: 5px;
   margin-right: 6px;
-  padding-right: 4px;
-  border-right: none !important;
+  padding: 0 8px 0 6px;
+  background: var(--sf2);
+  border-radius: 999px;
+  height: 26px;
+  border: none !important;
 }
 .ops-user-sel {
   font-size: 11px;
   font-weight: 600;
   color: var(--t1);
-  background: var(--sf2);
+  background: transparent;
   border: none !important;
   outline: none !important;
   box-shadow: none !important;
-  border-radius: var(--radius-sm);
-  padding: 3px 6px;
   cursor: pointer;
+  padding: 0 2px;
 }
 .ops-preset-chip {
   display: inline-flex;
   align-items: center;
-  gap: 4px;
+  gap: 5px;
+  height: 26px;
   background: var(--sf2);
   border: none !important;
   outline: none !important;
   box-shadow: none !important;
-  border-radius: 14px;
-  padding: 3px 10px;
+  border-radius: 999px;
+  padding: 0 10px;
   font-size: 11px;
   font-weight: 500;
   color: var(--t2);
   cursor: pointer;
   white-space: nowrap;
-  transition: var(--transition);
+  transition: all 0.18s cubic-bezier(0.4, 0, 0.2, 1);
   user-select: none;
 }
 .ops-preset-chip:hover {
   color: var(--t1);
   background: var(--sf3);
+  transform: translateY(-1px);
+}
+.ops-preset-chip:active {
+  transform: translateY(0);
 }
 .ops-preset-chip.active {
-  background: var(--ac) !important;
-  color: #ffffff !important;
+  background: var(--sf3) !important;
+  color: var(--ac) !important;
   font-weight: 700;
   border: none !important;
   outline: none !important;
-  box-shadow: none !important;
+  box-shadow: inset 0 0 0 1.5px var(--ac) !important;
 }
 .ops-preset-chip .preset-count {
   background: var(--sf3);
   color: var(--t3);
-  padding: 0 5px;
-  border-radius: 8px;
+  padding: 0 6px;
+  border-radius: 999px;
   font-size: 10px;
   font-family: var(--font-mono);
 }
 .ops-preset-chip.active .preset-count {
-  background: rgba(0, 0, 0, 0.22) !important;
+  background: var(--ac) !important;
   color: #ffffff !important;
 }
 
@@ -6906,11 +6930,12 @@ code, kbd, samp, pre,
 
 .dark-theme .ops-team-chip.active,
 .dark-theme .ops-preset-chip.active {
-  background: var(--ac) !important;
-  color: #ffffff !important;
+  background: var(--sf3) !important;
+  color: var(--ac) !important;
+  font-weight: 700;
   border: none !important;
   outline: none !important;
-  box-shadow: none !important;
+  box-shadow: inset 0 0 0 1.5px var(--ac) !important;
 }
 
 /* Kanban Board & Drag-Drop (5 Stages MECE Pro Max) */
