@@ -6383,30 +6383,29 @@ code, kbd, samp, pre,
 .ops-team-rail {
   display: flex;
   align-items: center;
-  gap: 10px;
-  background: var(--sf);
+  gap: 8px;
+  background: transparent !important;
   border: none !important;
-  box-shadow: var(--shadow-sm);
-  border-radius: 12px;
-  padding: 8px 14px;
-  margin-bottom: 12px;
+  box-shadow: none !important;
+  padding: 2px 0 6px 0;
+  margin-bottom: 8px;
   flex-wrap: wrap;
 }
 .ops-team-rail-label {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
+  gap: 5px;
   font-size: 11px;
   font-weight: 700;
-  color: var(--t2);
+  color: var(--t3);
   white-space: nowrap;
-  padding-right: 8px;
-  border-right: 1px solid var(--bd2);
+  padding-right: 4px;
+  border: none !important;
 }
 .ops-team-chips {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 6px;
   flex: 1;
   flex-wrap: wrap;
 }
@@ -6416,32 +6415,32 @@ code, kbd, samp, pre,
   gap: 6px;
   height: 28px;
   padding: 0 10px;
-  border-radius: 999px;
+  border-radius: 6px;
   border: none !important;
   outline: none !important;
-  box-shadow: none !important;
-  background: var(--sf2);
+  background: var(--sf);
+  box-shadow: var(--shadow-sm);
   font-size: 11px;
   color: var(--t1);
   cursor: pointer;
-  transition: all 0.18s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 0.15s ease;
   user-select: none;
   white-space: nowrap;
 }
 .ops-team-chip:hover {
-  background: var(--sf3);
+  background: var(--sf2);
   transform: translateY(-1px);
 }
 .ops-team-chip:active {
   transform: translateY(0);
 }
 .ops-team-chip.active {
-  background: var(--sf3) !important;
+  background: var(--sf) !important;
   color: var(--ac) !important;
   font-weight: 700;
   border: none !important;
   outline: none !important;
-  box-shadow: inset 0 0 0 1.5px var(--ac) !important;
+  box-shadow: inset 0 0 0 1.5px var(--ac), var(--shadow-sm) !important;
 }
 .ops-team-chip.active .ops-team-chip-badge {
   background: var(--ac) !important;
@@ -6451,14 +6450,14 @@ code, kbd, samp, pre,
   color: var(--ac) !important;
 }
 .ops-team-chip.active .ops-team-capacity-bar-wrap {
-  background: rgba(0, 0, 0, 0.15) !important;
+  background: rgba(0, 0, 0, 0.12) !important;
 }
 .ops-team-chip-avatar {
   width: 17px;
   height: 17px;
-  border-radius: 50%;
-  background: var(--sf3);
-  color: var(--t1);
+  border-radius: 4px;
+  background: var(--sf2);
+  color: var(--t2);
   font-size: 9px;
   font-weight: 700;
   display: flex;
@@ -6483,7 +6482,7 @@ code, kbd, samp, pre,
   color: var(--t1);
 }
 .ops-team-capacity-bar-wrap {
-  width: 38px;
+  width: 36px;
   height: 3px;
   background: var(--bd2);
   border-radius: 2px;
@@ -6497,9 +6496,9 @@ code, kbd, samp, pre,
 .ops-team-chip-badge {
   font-size: 9.5px;
   font-weight: 700;
-  padding: 1px 6px;
-  border-radius: 999px;
-  background: var(--sf3);
+  padding: 1px 5px;
+  border-radius: 4px;
+  background: var(--sf2);
   color: var(--t2);
   font-family: var(--font-mono);
   white-space: nowrap;
@@ -6508,10 +6507,10 @@ code, kbd, samp, pre,
 .ops-team-actions-right {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
+  gap: 6px;
   margin-left: auto;
-  padding-left: 8px;
-  border-left: 1px solid var(--bd2);
+  border: none !important;
+  padding-left: 0;
 }
 .ops-team-rebalance-btn {
   display: inline-flex;
@@ -6520,19 +6519,19 @@ code, kbd, samp, pre,
   font-size: 11px;
   font-weight: 600;
   height: 28px;
-  padding: 0 12px;
-  border-radius: 999px;
+  padding: 0 11px;
+  border-radius: 6px;
   border: none !important;
   outline: none !important;
-  box-shadow: none !important;
-  background: var(--sf2);
+  background: var(--sf);
+  box-shadow: var(--shadow-sm);
   color: var(--t1);
   cursor: pointer;
-  transition: all 0.18s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 0.15s ease;
   white-space: nowrap;
 }
 .ops-team-rebalance-btn:hover {
-  background: var(--sf3);
+  background: var(--sf2);
   color: var(--ac);
   transform: translateY(-1px);
 }
@@ -6545,7 +6544,7 @@ code, kbd, samp, pre,
   display: flex;
   align-items: center;
   gap: 6px;
-  margin-bottom: 10px;
+  margin-bottom: 8px;
   overflow-x: auto;
   padding-bottom: 2px;
 }
@@ -6554,9 +6553,10 @@ code, kbd, samp, pre,
   align-items: center;
   gap: 5px;
   margin-right: 6px;
-  padding: 0 8px 0 6px;
-  background: var(--sf2);
-  border-radius: 999px;
+  padding: 0 8px;
+  background: var(--sf);
+  box-shadow: var(--shadow-sm);
+  border-radius: 6px;
   height: 26px;
   border: none !important;
 }
@@ -6576,41 +6576,41 @@ code, kbd, samp, pre,
   align-items: center;
   gap: 5px;
   height: 26px;
-  background: var(--sf2);
+  background: var(--sf);
+  box-shadow: var(--shadow-sm);
   border: none !important;
   outline: none !important;
-  box-shadow: none !important;
-  border-radius: 999px;
-  padding: 0 10px;
+  border-radius: 6px;
+  padding: 0 9px;
   font-size: 11px;
   font-weight: 500;
   color: var(--t2);
   cursor: pointer;
   white-space: nowrap;
-  transition: all 0.18s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 0.15s ease;
   user-select: none;
 }
 .ops-preset-chip:hover {
   color: var(--t1);
-  background: var(--sf3);
+  background: var(--sf2);
   transform: translateY(-1px);
 }
 .ops-preset-chip:active {
   transform: translateY(0);
 }
 .ops-preset-chip.active {
-  background: var(--sf3) !important;
+  background: var(--sf) !important;
   color: var(--ac) !important;
   font-weight: 700;
   border: none !important;
   outline: none !important;
-  box-shadow: inset 0 0 0 1.5px var(--ac) !important;
+  box-shadow: inset 0 0 0 1.5px var(--ac), var(--shadow-sm) !important;
 }
 .ops-preset-chip .preset-count {
-  background: var(--sf3);
+  background: var(--sf2);
   color: var(--t3);
-  padding: 0 6px;
-  border-radius: 999px;
+  padding: 0 5px;
+  border-radius: 4px;
   font-size: 10px;
   font-family: var(--font-mono);
 }
@@ -6930,12 +6930,12 @@ code, kbd, samp, pre,
 
 .dark-theme .ops-team-chip.active,
 .dark-theme .ops-preset-chip.active {
-  background: var(--sf3) !important;
+  background: var(--sf) !important;
   color: var(--ac) !important;
   font-weight: 700;
   border: none !important;
   outline: none !important;
-  box-shadow: inset 0 0 0 1.5px var(--ac) !important;
+  box-shadow: inset 0 0 0 1.5px var(--ac), var(--shadow-sm) !important;
 }
 
 /* Kanban Board & Drag-Drop (5 Stages MECE Pro Max) */
